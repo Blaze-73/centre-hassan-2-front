@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "events": "Événements",
+    "spaces": "Espaces",
+    "gallery": "Galerie",
+    "news": "Actualités",
+    "contact": "Contact",
+    "practical": "Infos pratiques",
+    "admin": "Administration"
+  },
+  "hero": {
+    "title": "Centre Hassan II des Rencontres Internationales",
+    "subtitle": "Asilah, Maroc — Depuis 1988",
+    "cta": "Découvrir nos événements"
+  },
+  "home": {
+    "about_title": "Notre Histoire",
+    "about_text": "Fondé en 1988, le Centre Hassan II des Rencontres Internationales est un espace culturel emblématique situé à Asilah. Il accueille le célèbre Moussem Culturel d'Asilah, des conférences internationales, des expositions d'art et des forums littéraires.",
+    "about_cta": "En savoir plus",
+    "upcoming_events": "Événements à venir",
+    "spaces_title": "Nos Espaces",
+    "gallery_title": "Galerie",
+    "stats_years": "Années d'héritage",
+    "stats_events": "Événements organisés",
+    "stats_countries": "Pays représentés",
+    "stats_artists": "Artistes invités",
+    "newsletter_title": "Restez informé",
+    "newsletter_placeholder": "Votre adresse email",
+    "newsletter_cta": "S'abonner"
+  },
+  "about": {
+    "title": "À propos du Centre",
+    "mission": "Mission & Vision",
+    "mission_text": "Promouvoir le dialogue interculturel et l'échange artistique entre les peuples.",
+    "founded": "Fondation",
+    "founded_text": "Le Centre a été inauguré en 1988 par le Roi Hassan II.",
+    "figures": "Personnalités clés",
+    "awards": "Récompenses"
+  },
+  "events": {
+    "title": "Événements",
+    "all": "Tous",
+    "upcoming": "À venir",
+    "past": "Passés",
+    "search": "Rechercher un événement...",
+    "no_events": "Aucun événement trouvé",
+    "details": "Détails",
+    "register": "S'inscrire",
+    "share": "Partager",
+    "related": "Événements liés",
+    "date": "Date",
+    "time": "Heure",
+    "category": "Catégorie",
+    "venue": "Lieu"
+  },
+  "spaces": {
+    "title": "Nos Espaces",
+    "capacity": "Capacité",
+    "amenities": "Équipements",
+    "no_spaces": "Aucun espace trouvé",
+    "details": "Voir détails"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "all": "Toutes",
+    "no_images": "Aucune image trouvée"
+  },
+  "news": {
+    "title": "Actualités",
+    "read_more": "Lire la suite",
+    "no_news": "Aucun article trouvé",
+    "share": "Partager",
+    "related": "Articles liés",
+    "by": "Par"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "form_title": "Envoyez-nous un message",
+    "name": "Nom complet",
+    "email": "Email",
+    "phone": "Téléphone",
+    "subject": "Sujet",
+    "message": "Message",
+    "submit": "Envoyer",
+    "success": "Message envoyé avec succès !",
+    "info_title": "Nos coordonnées",
+    "address": "Adresse",
+    "address_value": "Centre Hassan II, Asilah, Maroc",
+    "phone_value": "+212 5 39 41 50 00",
+    "email_value": "info@centre-hassan2.ma"
+  },
+  "practical": {
+    "title": "Infos pratiques",
+    "hours": "Horaires d'ouverture",
+    "hours_week": "Lun-Ven: 9h00 - 18h00",
+    "hours_sat": "Sam: 10h00 - 16h00",
+    "hours_sun": "Dim: Fermé",
+    "getting_there": "Comment s'y rendre",
+    "from_tangier": "Depuis Tanger: 45 min en voiture via l'autoroute A1",
+    "from_rabat": "Depuis Rabat: 2h en voiture via l'autoroute A1",
+    "accessibility": "Accessibilité",
+    "accessibility_text": "Le centre est accessible aux personnes à mobilité réduite.",
+    "accommodation": "Hébergement à proximité",
+    "faq": "FAQ"
+  },
+  "footer": {
+    "rights": "Tous droits réservés",
+    "follow_us": "Suivez-nous",
+    "quick_links": "Liens rapides"
+  },
+  "admin": {
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "events": "Événements",
+    "news": "Actualités",
+    "gallery": "Galerie",
+    "spaces": "Espaces",
+    "users": "Utilisateurs",
+    "contacts": "Messages",
+    "settings": "Paramètres",
+    "total_events": "Total événements",
+    "upcoming_events": "Événements à venir",
+    "unread_contacts": "Messages non lus",
+    "gallery_items": "Images galerie",
+    "create": "Créer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "search": "Rechercher...",
+    "status_draft": "Brouillon",
+    "status_published": "Publié",
+    "status_cancelled": "Annulé",
+    "confirm_delete": "Confirmer la suppression ?",
+    "email": "Email",
+    "password": "Mot de passe",
+    "login_btn": "Se connecter"
+  }
+}

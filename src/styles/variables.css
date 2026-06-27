@@ -1,0 +1,28 @@
+:root {
+  --primary: #C8956C;
+  --primary-dark: #A0714E;
+  --secondary: #1B3A4B;
+  --accent: #D4A853;
+  --bg: #FDFAF6;
+  --surface: #FFFFFF;
+  --text-primary: #1A1A2E;
+  --text-secondary: #6B7280;
+  --success: #10B981;
+  --error: #EF4444;
+  --dark-bg: #0F1923;
+
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-arabic: 'Noto Sans Arabic', sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+
+  --transition: 0.3s ease;
+  --max-width: 1200px;
+}

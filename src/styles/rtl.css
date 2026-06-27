@@ -1,0 +1,43 @@
+[dir="rtl"] .navbar-links {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+[dir="rtl"] .hero-overlay h1 {
+  text-align: right;
+}
+
+[dir="rtl"] .split-section {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .stat-item {
+  border-left: none;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+[dir="rtl"] .stat-item:first-child {
+  border-right: none;
+}
+
+[dir="rtl"] .footer-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .admin-sidebar {
+  border-right: none;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+[dir="rtl"] .contact-info-card {
+  text-align: right;
+}
+
+[dir="rtl"] .event-meta span {
+  margin-right: 0;
+  margin-left: 1.5rem;
+}
+
+[dir="rtl"] .filter-bar {
+  flex-direction: row-reverse;
+}

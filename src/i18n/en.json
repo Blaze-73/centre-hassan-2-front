@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "events": "Events",
+    "spaces": "Spaces",
+    "gallery": "Gallery",
+    "news": "News",
+    "contact": "Contact",
+    "practical": "Practical Info",
+    "admin": "Admin"
+  },
+  "hero": {
+    "title": "Centre Hassan II for International Encounters",
+    "subtitle": "Asilah, Morocco — Since 1988",
+    "cta": "Discover Our Events"
+  },
+  "home": {
+    "about_title": "Our Story",
+    "about_text": "Founded in 1988, the Centre Hassan II for International Encounters is an iconic cultural space in Asilah, hosting the renowned Asilah Cultural Moussem, international conferences, art exhibitions, and literary forums.",
+    "about_cta": "Learn More",
+    "upcoming_events": "Upcoming Events",
+    "spaces_title": "Our Spaces",
+    "gallery_title": "Gallery",
+    "stats_years": "Years of Heritage",
+    "stats_events": "Events Hosted",
+    "stats_countries": "Countries Represented",
+    "stats_artists": "Artists Featured",
+    "newsletter_title": "Stay Informed",
+    "newsletter_placeholder": "Your email address",
+    "newsletter_cta": "Subscribe"
+  },
+  "about": {
+    "title": "About the Centre",
+    "mission": "Mission & Vision",
+    "mission_text": "Promoting intercultural dialogue and artistic exchange between peoples.",
+    "founded": "Foundation",
+    "founded_text": "The Centre was inaugurated in 1988 by King Hassan II.",
+    "figures": "Key Figures",
+    "awards": "Awards"
+  },
+  "events": {
+    "title": "Events",
+    "all": "All",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "search": "Search events...",
+    "no_events": "No events found",
+    "details": "Details",
+    "register": "Register",
+    "share": "Share",
+    "related": "Related Events",
+    "date": "Date",
+    "time": "Time",
+    "category": "Category",
+    "venue": "Venue"
+  },
+  "spaces": {
+    "title": "Our Spaces",
+    "capacity": "Capacity",
+    "amenities": "Amenities",
+    "no_spaces": "No spaces found",
+    "details": "View Details"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "all": "All",
+    "no_images": "No images found"
+  },
+  "news": {
+    "title": "News",
+    "read_more": "Read More",
+    "no_news": "No articles found",
+    "share": "Share",
+    "related": "Related Articles",
+    "by": "By"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "form_title": "Send us a message",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Message",
+    "submit": "Send",
+    "success": "Message sent successfully!",
+    "info_title": "Our Details",
+    "address": "Address",
+    "address_value": "Centre Hassan II, Asilah, Morocco",
+    "phone_value": "+212 5 39 41 50 00",
+    "email_value": "info@centre-hassan2.ma"
+  },
+  "practical": {
+    "title": "Practical Information",
+    "hours": "Opening Hours",
+    "hours_week": "Mon-Fri: 9:00 AM - 6:00 PM",
+    "hours_sat": "Sat: 10:00 AM - 4:00 PM",
+    "hours_sun": "Sun: Closed",
+    "getting_there": "Getting There",
+    "from_tangier": "From Tangier: 45 min drive via A1 highway",
+    "from_rabat": "From Rabat: 2h drive via A1 highway",
+    "accessibility": "Accessibility",
+    "accessibility_text": "The centre is accessible for visitors with reduced mobility.",
+    "accommodation": "Nearby Accommodation",
+    "faq": "FAQ"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "follow_us": "Follow Us",
+    "quick_links": "Quick Links"
+  },
+  "admin": {
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "events": "Events",
+    "news": "News",
+    "gallery": "Gallery",
+    "spaces": "Spaces",
+    "users": "Users",
+    "contacts": "Messages",
+    "settings": "Settings",
+    "total_events": "Total Events",
+    "upcoming_events": "Upcoming Events",
+    "unread_contacts": "Unread Messages",
+    "gallery_items": "Gallery Images",
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search...",
+    "status_draft": "Draft",
+    "status_published": "Published",
+    "status_cancelled": "Cancelled",
+    "confirm_delete": "Confirm deletion?",
+    "email": "Email",
+    "password": "Password",
+    "login_btn": "Sign In"
+  }
+}
