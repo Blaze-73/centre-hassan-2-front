@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import NewsCard from '../../components/common/NewsCard';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import PageHero from '../../components/common/PageHero';
 
 const mockNews = [
   { id: 1, slug: 'article-1', title: { fr: 'Inauguration de la nouvelle exposition' }, content: { fr: 'Le Centre Hassan II a inauguré une nouvelle exposition...' }, created_at: '2026-05-15', featured_image: '' },
@@ -15,12 +16,7 @@ export default function NewsPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="page-hero-bg" />
-        <div className="container">
-          <h1>{t('news.title')}</h1>
-        </div>
-      </section>
+      <PageHero titleKey="news.title" />
 
       <section className="section">
         <div className="container">
@@ -52,13 +48,6 @@ export default function NewsPage() {
       </section>
 
       <style>{`
-        .page-hero {
-          padding: 10rem 0 5rem;
-          background: var(--secondary);
-          color: #fff;
-          text-align: center;
-        }
-        .page-hero h1 { font-size: 3rem; }
         .news-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

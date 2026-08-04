@@ -5,6 +5,7 @@ import { FaSearch, FaCalendarAlt, FaTh, FaList, FaCalendarDay } from 'react-icon
 import EventCard from '../../components/common/EventCard';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import PageHero from '../../components/common/PageHero';
 
 const categories = ['all', 'conference', 'exhibition', 'workshop', 'concert', 'festival', 'literary', 'ceremony'];
 
@@ -29,12 +30,7 @@ export default function EventsPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="page-hero-bg" />
-        <div className="container">
-          <h1>{t('events.title')}</h1>
-        </div>
-      </section>
+      <PageHero titleKey="events.title" />
 
       <section className="section">
         <div className="container">
@@ -84,14 +80,6 @@ export default function EventsPage() {
       </section>
 
       <style>{`
-        .page-hero {
-          position: relative;
-          padding: 10rem 0 5rem;
-          background: var(--secondary);
-          color: #fff;
-          text-align: center;
-        }
-        .page-hero h1 { font-size: 3rem; }
         .filter-bar {
           margin-bottom: 2rem;
           display: flex;

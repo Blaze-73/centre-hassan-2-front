@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import Button from '../../components/common/Button';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import PageHero from '../../components/common/PageHero';
 
 export default function ContactPage() {
   const { t } = useTranslation();
@@ -28,12 +29,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="page-hero-bg" />
-        <div className="container">
-          <h1>{t('contact.title')}</h1>
-        </div>
-      </section>
+      <PageHero titleKey="contact.title" />
 
       <section className="section">
         <div className="container">
@@ -103,13 +99,6 @@ export default function ContactPage() {
       </section>
 
       <style>{`
-        .page-hero {
-          padding: 10rem 0 5rem;
-          background: var(--secondary);
-          color: #fff;
-          text-align: center;
-        }
-        .page-hero h1 { font-size: 3rem; }
         .contact-layout {
           display: grid;
           grid-template-columns: 1fr 1fr;

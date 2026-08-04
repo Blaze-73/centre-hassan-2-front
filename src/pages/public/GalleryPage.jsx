@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import GalleryGrid from '../../components/common/GalleryGrid';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import PageHero from '../../components/common/PageHero';
 
 const categories = ['all', 'conference', 'exhibition', 'workshop', 'cultural'];
 
@@ -22,12 +23,7 @@ export default function GalleryPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="page-hero-bg" />
-        <div className="container">
-          <h1>{t('gallery.title')}</h1>
-        </div>
-      </section>
+      <PageHero titleKey="gallery.title" />
 
       <section className="section">
         <div className="container">
@@ -49,13 +45,6 @@ export default function GalleryPage() {
       </section>
 
       <style>{`
-        .page-hero {
-          padding: 10rem 0 5rem;
-          background: var(--secondary);
-          color: #fff;
-          text-align: center;
-        }
-        .page-hero h1 { font-size: 3rem; }
         .gallery-filters {
           display: flex;
           gap: 0.5rem;

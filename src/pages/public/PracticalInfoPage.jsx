@@ -4,6 +4,7 @@ import { FaClock, FaCar, FaWheelchair, FaHotel, FaQuestionCircle } from 'react-i
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import PageHero from '../../components/common/PageHero';
 
 const faqs = [
   { q: 'Quels sont les horaires d\'ouverture ?', a: 'Lun-Ven: 9h00-18h00, Sam: 10h00-16h00, Dim: Fermé' },
@@ -19,12 +20,7 @@ export default function PracticalInfoPage() {
 
   return (
     <>
-      <section className="page-hero">
-        <div className="page-hero-bg" />
-        <div className="container">
-          <h1>{t('practical.title')}</h1>
-        </div>
-      </section>
+      <PageHero titleKey="practical.title" />
 
       <section className="section">
         <div className="container">
@@ -86,13 +82,6 @@ export default function PracticalInfoPage() {
       </section>
 
       <style>{`
-        .page-hero {
-          padding: 10rem 0 5rem;
-          background: var(--secondary);
-          color: #fff;
-          text-align: center;
-        }
-        .page-hero h1 { font-size: 3rem; }
         .practical-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
