@@ -20,6 +20,7 @@
     "about_text": "Fondé en 1988, le Centre Hassan II des Rencontres Internationales est un espace culturel emblématique situé à Asilah. Il accueille le célèbre Moussem Culturel d'Asilah, des conférences internationales, des expositions d'art et des forums littéraires.",
     "about_cta": "En savoir plus",
     "upcoming_events": "Événements à venir",
+    "no_upcoming_events": "Aucun événement à venir",
     "spaces_title": "Nos Espaces",
     "gallery_title": "Galerie",
     "stats_years": "Années d'héritage",
@@ -67,7 +68,8 @@
   "gallery": {
     "title": "Galerie",
     "all": "Toutes",
-    "no_images": "Aucune image trouvée"
+    "no_images": "Aucune image trouvée",
+    "empty_hint": "La galerie est vide pour le moment."
   },
   "news": {
     "title": "Actualités",
@@ -87,6 +89,7 @@
     "message": "Message",
     "submit": "Envoyer",
     "success": "Message envoyé avec succès !",
+    "error": "Erreur lors de l'envoi",
     "info_title": "Nos coordonnées",
     "address": "Adresse",
     "address_value": "Centre Hassan II, Asilah, Maroc",
@@ -105,6 +108,7 @@
     "accessibility": "Accessibilité",
     "accessibility_text": "Le centre est accessible aux personnes à mobilité réduite.",
     "accommodation": "Hébergement à proximité",
+    "accommodation_text": "Plusieurs hôtels et riads sont disponibles à Asilah à proximité du centre.",
     "faq": "FAQ"
   },
   "footer": {

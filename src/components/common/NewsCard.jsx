@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 const locales = { fr, en: enUS, ar };
 
 export default function NewsCard({ article, index = 0 }) {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const locale = locales[i18n.language] || fr;
   const title = typeof article.title === 'object' ? (article.title[i18n.language] || article.title.fr) : article.title;
 
@@ -36,7 +36,7 @@ export default function NewsCard({ article, index = 0 }) {
               ? (article.content[i18n.language] || article.content.fr)?.replace(/<[^>]*>/g, '').substring(0, 150)
               : article.content?.replace(/<[^>]*>/g, '').substring(0, 150)}
           </p>
-          <span className="read-more">Lire la suite →</span>
+          <span className="read-more">{t('news.read_more')} →</span>
         </div>
       </Link>
       <style>{`

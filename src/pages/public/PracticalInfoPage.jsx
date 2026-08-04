@@ -51,7 +51,7 @@ export default function PracticalInfoPage() {
             <AnimatedSection delay={0.3} className="practical-card">
               <FaHotel className="practical-icon" />
               <h3>{t('practical.accommodation')}</h3>
-              <p>Plusieurs hôtels et riads sont disponibles à Asilah à proximité du centre.</p>
+              <p>{t('practical.accommodation_text')}</p>
             </AnimatedSection>
           </div>
 

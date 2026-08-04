@@ -20,6 +20,7 @@
     "about_text": "Founded in 1988, the Centre Hassan II for International Encounters is an iconic cultural space in Asilah, hosting the renowned Asilah Cultural Moussem, international conferences, art exhibitions, and literary forums.",
     "about_cta": "Learn More",
     "upcoming_events": "Upcoming Events",
+    "no_upcoming_events": "No upcoming events",
     "spaces_title": "Our Spaces",
     "gallery_title": "Gallery",
     "stats_years": "Years of Heritage",
@@ -67,7 +68,8 @@
   "gallery": {
     "title": "Gallery",
     "all": "All",
-    "no_images": "No images found"
+    "no_images": "No images found",
+    "empty_hint": "The gallery is empty for now."
   },
   "news": {
     "title": "News",
@@ -87,6 +89,7 @@
     "message": "Message",
     "submit": "Send",
     "success": "Message sent successfully!",
+    "error": "An error occurred while sending",
     "info_title": "Our Details",
     "address": "Address",
     "address_value": "Centre Hassan II, Asilah, Morocco",
@@ -105,6 +108,7 @@
     "accessibility": "Accessibility",
     "accessibility_text": "The centre is accessible for visitors with reduced mobility.",
     "accommodation": "Nearby Accommodation",
+    "accommodation_text": "Several hotels and riads are available in Asilah close to the centre.",
     "faq": "FAQ"
   },
   "footer": {

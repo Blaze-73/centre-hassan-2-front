@@ -124,7 +124,7 @@ export default function HomePage() {
                 <div className="spinner" />
               </div>
             ) : upcomingEvents.length === 0 ? (
-              <p style={{ textAlign: 'center', color: '#6B7280', padding: '2rem' }}>Aucun événement à venir</p>
+              <p style={{ textAlign: 'center', color: '#6B7280', padding: '2rem' }}>{t('home.no_upcoming_events')}</p>
             ) : (
               <div className="events-scroll">
                 {upcomingEvents.map((event) => (

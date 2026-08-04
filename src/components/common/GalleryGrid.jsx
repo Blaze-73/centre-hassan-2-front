@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
 export default function GalleryGrid({ images = [] }) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
   if (images.length === 0) {
     return (
       <div className="empty-state">
-        <h3>Aucune image</h3>
-        <p>La galerie est vide pour le moment.</p>
+        <h3>{t('gallery.no_images')}</h3>
+        <p>{t('gallery.empty_hint')}</p>
       </div>
     );
   }

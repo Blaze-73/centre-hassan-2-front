@@ -18,7 +18,7 @@ export default function ContactPage() {
       toast.success(t('contact.success'));
       setForm({ name: '', email: '', phone: '', subject: '', message: '' });
     } catch {
-      toast.error('Erreur lors de l\'envoi');
+      toast.error(t('contact.error'));
     } finally {
       setSending(false);
     }
