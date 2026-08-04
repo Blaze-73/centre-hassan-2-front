@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import AnimatedSection from '../../components/common/AnimatedSection';
-import { FaAward, FaHandshake, FaHistory } from 'react-icons/fa';
+import { FaAward } from 'react-icons/fa';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import PageHero from '../../components/common/PageHero';
 

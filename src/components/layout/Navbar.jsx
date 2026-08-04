@@ -10,16 +10,18 @@ export default function Navbar() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [prevPath, setPrevPath] = useState(location.pathname);
+
+  if (prevPath !== location.pathname) {
+    setPrevPath(location.pathname);
+    setMenuOpen(false);
+  }
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';

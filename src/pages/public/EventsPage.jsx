@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FaSearch, FaCalendarAlt, FaTh, FaList, FaCalendarDay } from 'react-icons/fa';
 import EventCard from '../../components/common/EventCard';
-import AnimatedSection from '../../components/common/AnimatedSection';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import PageHero from '../../components/common/PageHero';
 

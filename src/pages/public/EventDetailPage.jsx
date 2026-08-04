@@ -1,8 +1,8 @@
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
-import { FaCalendarAlt, FaClock, FaMapMarkerAlt, FaShare, FaArrowLeft } from 'react-icons/fa';
+import { FaCalendarAlt, FaClock, FaMapMarkerAlt, FaArrowLeft } from 'react-icons/fa';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import Button from '../../components/common/Button';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
@@ -20,7 +20,6 @@ const mockEvent = {
 };
 
 export default function EventDetailPage() {
-  const { slug } = useParams();
   const { t, i18n } = useTranslation();
   useDocumentTitle(t('events.title'));
   const event = mockEvent;

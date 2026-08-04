@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import api from '../services/api';
 
 export function useApi(url, options = {}) {
@@ -6,10 +6,8 @@ export function useApi(url, options = {}) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(immediate);
   const [error, setError] = useState(null);
-  const paramsRef = useRef(params);
 
   const paramsKey = JSON.stringify(params);
-  paramsRef.current = params;
 
   const fetchData = useCallback(async (overrideParams) => {
     const controller = new AbortController();
@@ -17,7 +15,7 @@ export function useApi(url, options = {}) {
     setError(null);
     try {
       const response = await api.get(url, {
-        params: { ...paramsRef.current, ...overrideParams },
+        params: { ...JSON.parse(paramsKey), ...overrideParams },
         signal: controller.signal,
       });
       setData(response.data);
@@ -32,9 +30,11 @@ export function useApi(url, options = {}) {
   }, [url, paramsKey]);
 
   useEffect(() => {
-    if (immediate) {
+    if (!immediate) return undefined;
+    const id = setTimeout(() => {
       fetchData();
-    }
+    }, 0);
+    return () => clearTimeout(id);
   }, [immediate, fetchData]);
 
   return { data, loading, error, refetch: fetchData };

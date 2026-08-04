@@ -1,7 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import SpaceCard from '../../components/common/SpaceCard';
-import AnimatedSection from '../../components/common/AnimatedSection';
-import { FaSearch } from 'react-icons/fa';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import PageHero from '../../components/common/PageHero';
 

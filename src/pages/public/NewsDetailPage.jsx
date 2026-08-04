@@ -1,8 +1,8 @@
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
-import { FaArrowLeft, FaShare, FaUser } from 'react-icons/fa';
+import { FaArrowLeft, FaUser } from 'react-icons/fa';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
@@ -16,7 +16,6 @@ const mockArticle = {
 };
 
 export default function NewsDetailPage() {
-  const { slug } = useParams();
   const { t, i18n } = useTranslation();
   useDocumentTitle(t('news.title'));
   const article = mockArticle;
