@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import api from '../services/api';
 
 export function useApi(url, options = {}) {
@@ -6,23 +6,30 @@ export function useApi(url, options = {}) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(immediate);
   const [error, setError] = useState(null);
+  const paramsRef = useRef(params);
+
+  const paramsKey = JSON.stringify(params);
+  paramsRef.current = params;
 
   const fetchData = useCallback(async (overrideParams) => {
+    const controller = new AbortController();
     setLoading(true);
     setError(null);
     try {
       const response = await api.get(url, {
-        params: { ...params, ...overrideParams },
+        params: { ...paramsRef.current, ...overrideParams },
+        signal: controller.signal,
       });
       setData(response.data);
       return response.data;
     } catch (err) {
+      if (err.name === 'CanceledError') return undefined;
       setError(err.response?.data?.message || err.message);
       throw err;
     } finally {
       setLoading(false);
     }
-  }, [url]);
+  }, [url, paramsKey]);
 
   useEffect(() => {
     if (immediate) {
