@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import { FaAward, FaHandshake, FaHistory } from 'react-icons/fa';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 const timeline = [
   { year: '1978', event: 'Foundation of the Asilah Moussem' },
@@ -16,6 +17,7 @@ const figures = [
 
 export default function AboutPage() {
   const { t } = useTranslation();
+  useDocumentTitle(t('about.title'));
 
   return (
     <>

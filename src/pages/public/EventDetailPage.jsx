@@ -5,6 +5,7 @@ import { fr } from 'date-fns/locale';
 import { FaCalendarAlt, FaClock, FaMapMarkerAlt, FaShare, FaArrowLeft } from 'react-icons/fa';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import Button from '../../components/common/Button';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 const mockEvent = {
   id: 1,
@@ -21,6 +22,7 @@ const mockEvent = {
 export default function EventDetailPage() {
   const { slug } = useParams();
   const { t, i18n } = useTranslation();
+  useDocumentTitle(t('events.title'));
   const event = mockEvent;
 
   const title = typeof event.title === 'object' ? (event.title[i18n.language] || event.title.fr) : event.title;

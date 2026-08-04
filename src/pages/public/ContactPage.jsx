@@ -4,9 +4,11 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import Button from '../../components/common/Button';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 export default function ContactPage() {
   const { t } = useTranslation();
+  useDocumentTitle(t('contact.title'));
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [sending, setSending] = useState(false);
 

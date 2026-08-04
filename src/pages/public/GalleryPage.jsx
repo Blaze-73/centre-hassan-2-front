@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import GalleryGrid from '../../components/common/GalleryGrid';
 import AnimatedSection from '../../components/common/AnimatedSection';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 const categories = ['all', 'conference', 'exhibition', 'workshop', 'cultural'];
 
@@ -12,6 +13,7 @@ const mockImages = [
 
 export default function GalleryPage() {
   const { t } = useTranslation();
+  useDocumentTitle(t('gallery.title'));
   const [activeCategory, setActiveCategory] = useState('all');
 
   const filtered = activeCategory === 'all'

@@ -3,9 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { FaArrowLeft } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Button from '../../components/common/Button';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 export default function NotFoundPage() {
   const { t } = useTranslation();
+  useDocumentTitle(t('notFound.title'));
 
   return (
     <>

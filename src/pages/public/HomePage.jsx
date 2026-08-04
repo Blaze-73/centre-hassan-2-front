@@ -10,6 +10,7 @@ import toast from 'react-hot-toast';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import Button from '../../components/common/Button';
 import api from '../../services/api';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 const staticStats = [
   { value: 38, suffix: '+', key: 'stats_years' },
@@ -20,6 +21,7 @@ const staticStats = [
 
 export default function HomePage() {
   const { t, i18n } = useTranslation();
+  useDocumentTitle(t('hero.title'));
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [spaces, setSpaces] = useState([]);
   const [gallery, setGallery] = useState([]);

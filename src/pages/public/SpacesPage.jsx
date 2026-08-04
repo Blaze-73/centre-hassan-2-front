@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import SpaceCard from '../../components/common/SpaceCard';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import { FaSearch } from 'react-icons/fa';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 const mockSpaces = [
   { id: 1, name: { fr: 'Grande Salle de Conférence', en: 'Main Conference Hall', ar: 'قاعة المؤتمرات الكبرى' }, capacity: 500, amenities: ['Projecteur', 'Sonorisation', 'Climatisation'], images: [] },
@@ -11,6 +12,7 @@ const mockSpaces = [
 
 export default function SpacesPage() {
   const { t } = useTranslation();
+  useDocumentTitle(t('spaces.title'));
 
   return (
     <>

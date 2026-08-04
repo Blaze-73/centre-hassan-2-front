@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FaSearch, FaCalendarAlt, FaTh, FaList, FaCalendarDay } from 'react-icons/fa';
 import EventCard from '../../components/common/EventCard';
 import AnimatedSection from '../../components/common/AnimatedSection';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 const categories = ['all', 'conference', 'exhibition', 'workshop', 'concert', 'festival', 'literary', 'ceremony'];
 
@@ -15,6 +16,7 @@ const mockEvents = [
 
 export default function EventsPage() {
   const { t } = useTranslation();
+  useDocumentTitle(t('events.title'));
   const [activeCategory, setActiveCategory] = useState('all');
   const [search, setSearch] = useState('');
   const [view, setView] = useState('grid');

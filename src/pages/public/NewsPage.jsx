@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import NewsCard from '../../components/common/NewsCard';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 const mockNews = [
   { id: 1, slug: 'article-1', title: { fr: 'Inauguration de la nouvelle exposition' }, content: { fr: 'Le Centre Hassan II a inauguré une nouvelle exposition...' }, created_at: '2026-05-15', featured_image: '' },
@@ -10,6 +11,7 @@ const mockNews = [
 
 export default function NewsPage() {
   const { t } = useTranslation();
+  useDocumentTitle(t('news.title'));
 
   return (
     <>

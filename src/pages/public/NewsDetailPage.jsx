@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { FaArrowLeft, FaShare, FaUser } from 'react-icons/fa';
 import AnimatedSection from '../../components/common/AnimatedSection';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 const mockArticle = {
   id: 1,
@@ -17,6 +18,7 @@ const mockArticle = {
 export default function NewsDetailPage() {
   const { slug } = useParams();
   const { t, i18n } = useTranslation();
+  useDocumentTitle(t('news.title'));
   const article = mockArticle;
 
   const title = typeof article.title === 'object' ? (article.title[i18n.language] || article.title.fr) : article.title;

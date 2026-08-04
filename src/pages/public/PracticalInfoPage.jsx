@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FaClock, FaCar, FaWheelchair, FaHotel, FaQuestionCircle } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from '../../components/common/AnimatedSection';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 const faqs = [
   { q: 'Quels sont les horaires d\'ouverture ?', a: 'Lun-Ven: 9h00-18h00, Sam: 10h00-16h00, Dim: Fermé' },
@@ -13,6 +14,7 @@ const faqs = [
 
 export default function PracticalInfoPage() {
   const { t } = useTranslation();
+  useDocumentTitle(t('practical.title'));
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
