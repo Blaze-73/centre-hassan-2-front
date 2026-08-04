@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import { useInView } from 'react-intersection-observer';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import Button from '../../components/common/Button';
 import api from '../../services/api';
@@ -434,13 +435,23 @@ export default function HomePage() {
 }
 
 function Counter({ value, suffix }) {
-  return (
-    <motion.h2
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-    >
-      {value}{suffix}
-    </motion.h2>
-  );
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return undefined;
+    let raf;
+    const duration = 1600;
+    const start = performance.now();
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(eased * value));
+      if (progress < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, value]);
+
+  return <h2 ref={ref}>{display}{suffix}</h2>;
 }
