@@ -8,7 +8,9 @@
     "news": "Actualités",
     "contact": "Contact",
     "practical": "Infos pratiques",
-    "admin": "Administration"
+    "admin": "Administration",
+    "open_menu": "Ouvrir le menu",
+    "close_menu": "Fermer le menu"
   },
   "hero": {
     "title": "Centre Hassan II des Rencontres Internationales",

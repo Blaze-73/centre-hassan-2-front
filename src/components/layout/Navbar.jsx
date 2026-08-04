@@ -13,13 +13,20 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
 
   const links = [
     { to: '/', label: t('nav.home') },
@@ -63,7 +70,12 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? t('nav.close_menu') : t('nav.open_menu')}
+            aria-expanded={menuOpen}
+          >
             {menuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
           </button>
         </div>

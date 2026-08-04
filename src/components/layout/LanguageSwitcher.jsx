@@ -14,12 +14,14 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="language-switcher">
+    <div className="language-switcher" role="group" aria-label="Language">
       {Object.entries(flags).map(([code, label]) => (
         <button
           key={code}
           onClick={() => handleChange(code)}
           className={`lang-btn ${i18n.language === code ? 'active' : ''}`}
+          aria-pressed={i18n.language === code}
+          aria-label={label}
         >
           {label}
         </button>

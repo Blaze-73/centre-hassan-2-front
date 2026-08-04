@@ -8,7 +8,9 @@
     "news": "News",
     "contact": "Contact",
     "practical": "Practical Info",
-    "admin": "Admin"
+    "admin": "Admin",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu"
   },
   "hero": {
     "title": "Centre Hassan II for International Encounters",
