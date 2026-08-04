@@ -110,6 +110,12 @@
     "follow_us": "Follow Us",
     "quick_links": "Quick Links"
   },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "The page you are looking for does not exist or has been moved.",
+    "home": "Back to Home",
+    "contact": "Contact Us"
+  },
   "admin": {
     "login": "Login",
     "logout": "Logout",

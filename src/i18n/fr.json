@@ -110,6 +110,12 @@
     "follow_us": "Suivez-nous",
     "quick_links": "Liens rapides"
   },
+  "notFound": {
+    "title": "Page introuvable",
+    "message": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "home": "Retour à l'accueil",
+    "contact": "Contactez-nous"
+  },
   "admin": {
     "login": "Connexion",
     "logout": "Déconnexion",

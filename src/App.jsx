@@ -13,6 +13,7 @@ import NewsPage from './pages/public/NewsPage'
 import NewsDetailPage from './pages/public/NewsDetailPage'
 import ContactPage from './pages/public/ContactPage'
 import PracticalInfoPage from './pages/public/PracticalInfoPage'
+import NotFoundPage from './pages/public/NotFoundPage'
 
 import AdminLayout from './components/admin/AdminLayout'
 import LoginPage from './pages/admin/LoginPage'
@@ -40,6 +41,7 @@ function PublicLayout() {
           <Route path="news/:slug" element={<NewsDetailPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="practical-info" element={<PracticalInfoPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />
