@@ -6,6 +6,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { useInView } from 'react-intersection-observer';
+import toast from 'react-hot-toast';
 import AnimatedSection from '../../components/common/AnimatedSection';
 import Button from '../../components/common/Button';
 import api from '../../services/api';
@@ -23,6 +24,22 @@ export default function HomePage() {
   const [spaces, setSpaces] = useState([]);
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [subscribing, setSubscribing] = useState(false);
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    setSubscribing(true);
+    try {
+      await api.post('/newsletter/subscribe', { email: newsletterEmail });
+      toast.success(t('home.newsletter_success'));
+      setNewsletterEmail('');
+    } catch {
+      toast.error(t('home.newsletter_error'));
+    } finally {
+      setSubscribing(false);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -214,9 +231,17 @@ export default function HomePage() {
         <div className="container">
           <AnimatedSection className="newsletter-box">
             <h2>{t('home.newsletter_title')}</h2>
-            <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder={t('home.newsletter_placeholder')} required />
-              <button type="submit" className="btn btn-accent">{t('home.newsletter_cta')}</button>
+            <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
+              <input
+                type="email"
+                placeholder={t('home.newsletter_placeholder')}
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                required
+              />
+              <button type="submit" className="btn btn-accent" disabled={subscribing}>
+                {subscribing ? '...' : t('home.newsletter_cta')}
+              </button>
             </form>
           </AnimatedSection>
         </div>

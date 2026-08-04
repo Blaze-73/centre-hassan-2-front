@@ -28,7 +28,9 @@
     "stats_artists": "Artists Featured",
     "newsletter_title": "Stay Informed",
     "newsletter_placeholder": "Your email address",
-    "newsletter_cta": "Subscribe"
+    "newsletter_cta": "Subscribe",
+    "newsletter_success": "Subscribed! You will soon receive our latest news.",
+    "newsletter_error": "Something went wrong, please try again."
   },
   "about": {
     "title": "About the Centre",

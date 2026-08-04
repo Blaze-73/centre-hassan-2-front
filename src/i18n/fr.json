@@ -28,7 +28,9 @@
     "stats_artists": "Artistes invités",
     "newsletter_title": "Restez informé",
     "newsletter_placeholder": "Votre adresse email",
-    "newsletter_cta": "S'abonner"
+    "newsletter_cta": "S'abonner",
+    "newsletter_success": "Inscription réussie ! Vous recevrez bientôt nos actualités.",
+    "newsletter_error": "Une erreur est survenue, veuillez réessayer."
   },
   "about": {
     "title": "À propos du Centre",

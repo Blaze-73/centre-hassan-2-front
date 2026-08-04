@@ -28,7 +28,9 @@
     "stats_artists": "فنان مستضاف",
     "newsletter_title": "ابق على اطلاع",
     "newsletter_placeholder": "بريدك الإلكتروني",
-    "newsletter_cta": "اشترك"
+    "newsletter_cta": "اشترك",
+    "newsletter_success": "تم الاشتراك بنجاح! ستصلك أخبارنا قريباً.",
+    "newsletter_error": "حدث خطأ ما، يرجى المحاولة مرة أخرى."
   },
   "about": {
     "title": "عن المركز",
