@@ -37,6 +37,16 @@ export default function GalleryGrid({ images = [] }) {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
               onClick={() => { setIndex(i); setOpen(true); }}
+              role="button"
+              tabIndex={0}
+              aria-label={typeof img === 'object' && img.caption ? img.caption : ''}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setIndex(i);
+                  setOpen(true);
+                }
+              }}
             >
               <img src={src} alt={typeof img === 'object' && img.caption ? img.caption : ''} loading="lazy" />
             </motion.div>

@@ -1,43 +1,91 @@
-import { Link } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
-import { fr } from 'date-fns/locale';
-import { FaCalendarAlt, FaClock, FaMapMarkerAlt, FaArrowLeft } from 'react-icons/fa';
+import { fr, enUS, ar } from 'date-fns/locale';
+import { FaCalendarAlt, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 import AnimatedSection from '../../components/common/AnimatedSection';
-import Button from '../../components/common/Button';
+import RichText from '../../components/common/RichText';
+import Breadcrumbs from '../../components/common/Breadcrumbs';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import useFetch from '../../hooks/useFetch';
+import { localized } from '../../utils/localize';
+import Skeleton from '../../components/common/Skeleton';
 
-const mockEvent = {
-  id: 1,
-  slug: 'example',
-  title: { fr: 'Conférence Internationale sur le Dialogue des Cultures' },
-  description: { fr: '<p>Une conférence de renommée internationale réunissant des experts du monde entier pour discuter du dialogue interculturel.</p><p>Au programme: conférences plénières, ateliers et tables rondes.</p>' },
-  category: 'conference',
-  start_date: '2026-09-15T09:00:00',
-  end_date: '2026-09-17T18:00:00',
-  space: { name: { fr: 'Grande Salle' } },
-  featured_image: '',
-};
+const locales = { fr, en: enUS, ar };
+
+function buildShareLinks(url, title) {
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title);
+  return [
+    { name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}` },
+    { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}` },
+    { name: 'WhatsApp', url: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}` },
+  ];
+}
 
 export default function EventDetailPage() {
   const { t, i18n } = useTranslation();
-  useDocumentTitle(t('events.title'));
-  const event = mockEvent;
+  const { slug } = useParams();
 
-  const title = typeof event.title === 'object' ? (event.title[i18n.language] || event.title.fr) : event.title;
+  const { data: event, loading, error } = useFetch(`/events/${slug}`);
+
+  const lang = i18n.language;
+  const locale = locales[lang] || fr;
+  const title = event ? localized(event.title, lang) : '';
+  const description = event ? localized(event.description, lang) : '';
+
+  useDocumentTitle(title || t('events.title'), {
+    description: description ? description.replace(/<[^>]*>/g, '').substring(0, 155) : t('events.meta_description'),
+  });
+
+  const shareLinks = event ? buildShareLinks(window.location.href, title) : [];
+
+  if (loading) {
+    return (
+      <section className="section" style={{ paddingTop: '8rem' }}>
+        <div className="container" style={{ maxWidth: '800px' }}>
+          <Skeleton height={40} width="70%" />
+          <Skeleton height={18} style={{ marginTop: '1.5rem' }} />
+          <Skeleton height={18} style={{ marginTop: 8 }} />
+          <Skeleton height={300} style={{ marginTop: '2rem' }} />
+        </div>
+      </section>
+    );
+  }
+
+  if (error || !event) {
+    return (
+      <section className="section" style={{ paddingTop: '8rem' }}>
+        <div className="container">
+          <div className="empty-state">
+            <h3>{t('events.load_error')}</h3>
+            <Link to="/events" className="btn btn-primary">{t('common.back')}</Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const spaceName = event.space ? localized(event.space.name, lang) : null;
 
   return (
     <>
       <section className="detail-hero">
         <div className="detail-hero-bg" />
         <div className="container">
-          <Link to="/events" className="back-link"><FaArrowLeft /> {t('events.title')}</Link>
+          <div className="container-breadcrumbs">
+            <Breadcrumbs items={[{ label: t('events.title'), to: '/events' }, { label: title }]} />
+          </div>
           <AnimatedSection>
             <h1>{title}</h1>
             <div className="detail-meta">
-              <span><FaCalendarAlt /> {event.start_date && format(new Date(event.start_date), 'dd MMM yyyy', { locale: fr })}</span>
-              <span><FaClock /> {event.start_date && format(new Date(event.start_date), 'HH:mm')}</span>
-              {event.space && <span><FaMapMarkerAlt /> {event.space.name?.fr}</span>}
+              {event.start_date && (
+                <span><FaCalendarAlt /> {format(new Date(event.start_date), 'dd MMM yyyy', { locale })}</span>
+              )}
+              {event.start_date && (
+                <span><FaClock /> {format(new Date(event.start_date), 'HH:mm')}</span>
+              )}
+              {spaceName && <span><FaMapMarkerAlt /> {spaceName}</span>}
             </div>
           </AnimatedSection>
         </div>
@@ -47,21 +95,47 @@ export default function EventDetailPage() {
         <div className="container">
           <div className="detail-layout">
             <div className="detail-content">
+              {event.featured_image && (
+                <img
+                  src={event.featured_image}
+                  alt={title}
+                  className="detail-image"
+                  loading="eager"
+                />
+              )}
               <AnimatedSection>
-                <div dangerouslySetInnerHTML={{ __html: typeof event.description === 'object' ? (event.description[i18n.language] || event.description.fr) : event.description }} />
+                <RichText html={description} />
               </AnimatedSection>
             </div>
             <aside className="detail-sidebar">
               <AnimatedSection delay={0.2}>
-                <div className="sidebar-card">
-                  <h3>{t('events.register')}</h3>
-                  <Button variant="accent" style={{ width: '100%', justifyContent: 'center' }}>{t('events.register')}</Button>
-                </div>
+                {event.registration_link && (
+                  <div className="sidebar-card">
+                    <h3>{t('events.register')}</h3>
+                    <a
+                      href={event.registration_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-accent"
+                      style={{ width: '100%', justifyContent: 'center' }}
+                    >
+                      {t('events.register')}
+                    </a>
+                  </div>
+                )}
                 <div className="sidebar-card">
                   <h3>{t('events.share')}</h3>
                   <div className="share-buttons">
-                    {['Facebook', 'Twitter', 'WhatsApp'].map((s) => (
-                      <button key={s} className="share-btn">{s}</button>
+                    {shareLinks.map((s) => (
+                      <a
+                        key={s.name}
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="share-btn"
+                      >
+                        {s.name}
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -74,11 +148,16 @@ export default function EventDetailPage() {
       <style>{`
         .detail-hero {
           position: relative;
-          padding: 10rem 0 4rem;
+          padding: 9rem 0 4rem;
           background: var(--secondary);
           color: #fff;
         }
         .detail-hero h1 { font-size: 2.5rem; max-width: 700px; }
+        .container-breadcrumbs { margin-bottom: 1.5rem; }
+        .container-breadcrumbs .breadcrumbs { margin-bottom: 0; }
+        .container-breadcrumbs .breadcrumbs a,
+        .container-breadcrumbs .breadcrumbs svg { color: rgba(255,255,255,0.65); }
+        .container-breadcrumbs .breadcrumb-current { color: #fff; }
         .back-link {
           display: inline-flex;
           align-items: center;
@@ -89,6 +168,7 @@ export default function EventDetailPage() {
           transition: color 0.2s;
         }
         .back-link:hover { color: #fff; }
+        [dir="rtl"] .back-link svg { transform: scaleX(-1); }
         .detail-meta {
           display: flex;
           gap: 2rem;
@@ -108,6 +188,13 @@ export default function EventDetailPage() {
           gap: 3rem;
         }
         .detail-content p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+        .detail-image {
+          width: 100%;
+          max-height: 420px;
+          object-fit: cover;
+          border-radius: var(--radius-md);
+          margin-bottom: 2rem;
+        }
         .sidebar-card {
           background: var(--surface);
           padding: 1.5rem;
@@ -125,6 +212,8 @@ export default function EventDetailPage() {
           cursor: pointer;
           transition: all 0.2s;
           font-family: var(--font-body);
+          text-align: center;
+          color: var(--text-primary);
         }
         .share-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
         @media (max-width: 768px) {

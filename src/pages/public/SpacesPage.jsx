@@ -2,16 +2,14 @@ import { useTranslation } from 'react-i18next';
 import SpaceCard from '../../components/common/SpaceCard';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import PageHero from '../../components/common/PageHero';
-
-const mockSpaces = [
-  { id: 1, name: { fr: 'Grande Salle de Conférence', en: 'Main Conference Hall', ar: 'قاعة المؤتمرات الكبرى' }, capacity: 500, amenities: ['Projecteur', 'Sonorisation', 'Climatisation'], images: [] },
-  { id: 2, name: { fr: 'Galerie d\'Exposition', en: 'Exhibition Gallery', ar: 'صالة العرض' }, capacity: 200, amenities: ['Éclairage', 'Cimaises', 'Sécurité'], images: [] },
-  { id: 3, name: { fr: 'Salle d\'Atelier', en: 'Workshop Room', ar: 'قاعة الورشات' }, capacity: 50, amenities: ['Tables', 'Wi-Fi', 'Matériel'], images: [] },
-];
+import { SkeletonCards } from '../../components/common/Skeleton';
+import useFetch from '../../hooks/useFetch';
 
 export default function SpacesPage() {
   const { t } = useTranslation();
-  useDocumentTitle(t('spaces.title'));
+  useDocumentTitle(t('spaces.title'), { description: t('spaces.meta_description') });
+
+  const { data: spaces, loading, error, run } = useFetch('/spaces');
 
   return (
     <>
@@ -19,13 +17,20 @@ export default function SpacesPage() {
 
       <section className="section">
         <div className="container">
-          {mockSpaces.length === 0 ? (
+          {loading ? (
+            <SkeletonCards count={6} />
+          ) : error ? (
+            <div className="empty-state" role="alert">
+              <h3>{t('spaces.load_error')}</h3>
+              <button className="btn btn-primary" onClick={() => run()}>{t('common.retry')}</button>
+            </div>
+          ) : !spaces || spaces.length === 0 ? (
             <div className="empty-state">
               <h3>{t('spaces.no_spaces')}</h3>
             </div>
           ) : (
             <div className="spaces-page-grid">
-              {mockSpaces.map((space, i) => (
+              {spaces.map((space, i) => (
                 <SpaceCard key={space.id} space={space} index={i} />
               ))}
             </div>

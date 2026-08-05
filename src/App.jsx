@@ -1,9 +1,10 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useLocation } from 'react-router'
 import ScrollToTop from './components/layout/ScrollToTop'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import BackToTop from './components/common/BackToTop'
+import PageFade from './components/common/PageFade'
 
 import HomePage from './pages/public/HomePage'
 import AboutPage from './pages/public/AboutPage'
@@ -37,26 +38,29 @@ function PageLoader() {
 }
 
 function PublicLayout() {
+  const { pathname } = useLocation();
   return (
     <>
       <a href="#main-content" className="skip-link">Aller au contenu principal</a>
       <Navbar />
       <main id="main-content">
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="events" element={<EventsPage />} />
-            <Route path="events/:slug" element={<EventDetailPage />} />
-            <Route path="spaces" element={<SpacesPage />} />
-            <Route path="gallery" element={<GalleryPage />} />
-            <Route path="news" element={<NewsPage />} />
-            <Route path="news/:slug" element={<NewsDetailPage />} />
-            <Route path="contact" element={<ContactPage />} />
-            <Route path="practical-info" element={<PracticalInfoPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
+        <PageFade key={pathname}>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route index element={<HomePage />} />
+              <Route path="about" element={<AboutPage />} />
+              <Route path="events" element={<EventsPage />} />
+              <Route path="events/:slug" element={<EventDetailPage />} />
+              <Route path="spaces" element={<SpacesPage />} />
+              <Route path="gallery" element={<GalleryPage />} />
+              <Route path="news" element={<NewsPage />} />
+              <Route path="news/:slug" element={<NewsDetailPage />} />
+              <Route path="contact" element={<ContactPage />} />
+              <Route path="practical-info" element={<PracticalInfoPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+        </PageFade>
       </main>
       <Footer />
     </>

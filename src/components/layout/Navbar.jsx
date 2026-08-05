@@ -41,6 +41,11 @@ export default function Navbar() {
     { to: '/practical-info', label: t('nav.practical') },
   ];
 
+  const isActive = (to) => {
+    if (to === '/') return location.pathname === '/';
+    return location.pathname === to || location.pathname.startsWith(`${to}/`);
+  };
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-inner">
@@ -54,7 +59,8 @@ export default function Navbar() {
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className={`nav-link ${location.pathname === link.to ? 'active' : ''}`}
+                  className={`nav-link ${isActive(link.to) ? 'active' : ''}`}
+                  aria-current={isActive(link.to) ? 'page' : undefined}
                 >
                   {link.label}
                 </Link>
@@ -94,7 +100,7 @@ export default function Navbar() {
             <ul>
               {links.map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className="mobile-nav-link">
+                  <Link to={link.to} className={`mobile-nav-link ${isActive(link.to) ? 'active' : ''}`}>
                     {link.label}
                   </Link>
                 </li>
@@ -223,6 +229,7 @@ export default function Navbar() {
           color: var(--text-secondary);
         }
         .mobile-nav-link:hover { background: rgba(200,149,108,0.1); color: var(--primary); }
+        .mobile-nav-link.active { color: var(--primary); font-weight: 600; }
         .mobile-menu-lang {
           padding: 0.75rem 1.5rem;
           border-top: 1px solid #E5E7EB;

@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { Outlet, Navigate, useNavigate } from 'react-router';
+import { Outlet, Navigate, useNavigate, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { FiMenu, FiBell, FiChevronLeft } from 'react-icons/fi';
 import { useAuth } from '../../hooks/useAuth';
 import Sidebar from './Sidebar';
 import ConfirmModal from './ConfirmModal';
+import PageFade from '../common/PageFade';
 
 export default function AdminLayout() {
   const { user, loading, logout } = useAuth();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -67,7 +69,9 @@ export default function AdminLayout() {
           </div>
         </header>
         <main className="admin-content">
-          <Outlet />
+          <PageFade key={pathname}>
+            <Outlet />
+          </PageFade>
         </main>
       </div>
 

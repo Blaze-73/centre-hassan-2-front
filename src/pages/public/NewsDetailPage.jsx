@@ -1,38 +1,85 @@
-import { Link } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
-import { fr } from 'date-fns/locale';
-import { FaArrowLeft, FaUser } from 'react-icons/fa';
+import { fr, enUS, ar } from 'date-fns/locale';
+import { FaCalendarAlt } from 'react-icons/fa';
 import AnimatedSection from '../../components/common/AnimatedSection';
+import RichText from '../../components/common/RichText';
+import Breadcrumbs from '../../components/common/Breadcrumbs';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import useFetch from '../../hooks/useFetch';
+import { localized } from '../../utils/localize';
+import Skeleton from '../../components/common/Skeleton';
 
-const mockArticle = {
-  id: 1,
-  title: { fr: 'Inauguration de la nouvelle exposition' },
-  content: { fr: '<p>Le Centre Hassan II des Rencontres Internationales a le plaisir d\'annoncer l\'inauguration de sa nouvelle exposition d\'art contemporain.</p><p>Cette exposition réunit des artistes de renommée internationale et met en lumière la richesse de la création artistique contemporaine.</p><p>Vernissage le 15 septembre 2026 à 18h00. Entrée libre.</p>' },
-  created_at: '2026-05-15',
-  author: { name: 'Admin' },
-  featured_image: '',
-};
+const locales = { fr, en: enUS, ar };
+
+function buildShareLinks(url, title) {
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title);
+  return [
+    { name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}` },
+    { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}` },
+    { name: 'WhatsApp', url: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}` },
+  ];
+}
 
 export default function NewsDetailPage() {
   const { t, i18n } = useTranslation();
-  useDocumentTitle(t('news.title'));
-  const article = mockArticle;
+  const { slug } = useParams();
 
-  const title = typeof article.title === 'object' ? (article.title[i18n.language] || article.title.fr) : article.title;
+  const { data: article, loading, error } = useFetch(`/news/${slug}`);
+
+  const lang = i18n.language;
+  const locale = locales[lang] || fr;
+  const title = article ? localized(article.title, lang) : '';
+  const content = article ? localized(article.content, lang) : '';
+
+  useDocumentTitle(title || t('news.title'), {
+    description: content ? content.replace(/<[^>]*>/g, '').substring(0, 155) : t('news.meta_description'),
+  });
+
+  const shareLinks = article ? buildShareLinks(window.location.href, title) : [];
+
+  if (loading) {
+    return (
+      <section className="section" style={{ paddingTop: '8rem' }}>
+        <div className="container" style={{ maxWidth: '800px' }}>
+          <Skeleton height={40} width="70%" />
+          <Skeleton height={18} style={{ marginTop: '1.5rem' }} />
+          <Skeleton height={18} style={{ marginTop: 8 }} />
+          <Skeleton height={300} style={{ marginTop: '2rem' }} />
+        </div>
+      </section>
+    );
+  }
+
+  if (error || !article) {
+    return (
+      <section className="section" style={{ paddingTop: '8rem' }}>
+        <div className="container">
+          <div className="empty-state">
+            <h3>{t('news.load_error')}</h3>
+            <Link to="/news" className="btn btn-primary">{t('common.back')}</Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <>
       <section className="detail-hero">
         <div className="detail-hero-bg" />
         <div className="container">
-          <Link to="/news" className="back-link"><FaArrowLeft /> {t('news.title')}</Link>
+          <div className="container-breadcrumbs">
+            <Breadcrumbs items={[{ label: t('news.title'), to: '/news' }, { label: title }]} />
+          </div>
           <AnimatedSection>
             <h1>{title}</h1>
             <div className="detail-meta">
-              <span><FaUser /> {article.author?.name}</span>
-              <span>{article.created_at && format(new Date(article.created_at), 'dd MMM yyyy', { locale: fr })}</span>
+              {article.created_at && (
+                <span><FaCalendarAlt /> {format(new Date(article.created_at), 'dd MMM yyyy', { locale })}</span>
+              )}
             </div>
           </AnimatedSection>
         </div>
@@ -42,9 +89,11 @@ export default function NewsDetailPage() {
         <div className="container">
           <div className="detail-layout">
             <div className="detail-content">
+              {article.featured_image && (
+                <img src={article.featured_image} alt={title} className="detail-image" loading="eager" />
+              )}
               <AnimatedSection>
-                <div style={{ height: '400px', background: '#E5E7EB', borderRadius: 'var(--radius-md)', marginBottom: '2rem' }} />
-                <div dangerouslySetInnerHTML={{ __html: typeof article.content === 'object' ? (article.content[i18n.language] || article.content.fr) : article.content }} />
+                <RichText html={content} />
               </AnimatedSection>
             </div>
             <aside className="detail-sidebar">
@@ -52,8 +101,16 @@ export default function NewsDetailPage() {
                 <div className="sidebar-card">
                   <h3>{t('news.share')}</h3>
                   <div className="share-buttons">
-                    {['Facebook', 'Twitter', 'WhatsApp'].map((s) => (
-                      <button key={s} className="share-btn">{s}</button>
+                    {shareLinks.map((s) => (
+                      <a
+                        key={s.name}
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="share-btn"
+                      >
+                        {s.name}
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -66,12 +123,67 @@ export default function NewsDetailPage() {
       <style>{`
         .detail-hero {
           position: relative;
-          padding: 10rem 0 4rem;
+          padding: 9rem 0 4rem;
           background: var(--secondary);
           color: #fff;
         }
         .detail-hero h1 { font-size: 2.5rem; max-width: 700px; }
+        .container-breadcrumbs { margin-bottom: 1.5rem; }
+        .container-breadcrumbs .breadcrumbs { margin-bottom: 0; }
+        .container-breadcrumbs .breadcrumbs a,
+        .container-breadcrumbs .breadcrumbs svg { color: rgba(255,255,255,0.65); }
+        .container-breadcrumbs .breadcrumb-current { color: #fff; }
+        .detail-meta {
+          display: flex;
+          gap: 2rem;
+          margin-top: 1.5rem;
+          flex-wrap: wrap;
+        }
+        .detail-meta span {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: rgba(255,255,255,0.8);
+          font-size: 0.95rem;
+        }
+        .detail-layout {
+          display: grid;
+          grid-template-columns: 1fr 300px;
+          gap: 3rem;
+        }
         .detail-content p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+        .detail-image {
+          width: 100%;
+          max-height: 420px;
+          object-fit: cover;
+          border-radius: var(--radius-md);
+          margin-bottom: 2rem;
+        }
+        .sidebar-card {
+          background: var(--surface);
+          padding: 1.5rem;
+          border-radius: var(--radius-md);
+          box-shadow: var(--shadow-sm);
+          margin-bottom: 1.5rem;
+        }
+        .sidebar-card h3 { font-family: var(--font-body); font-size: 1rem; margin-bottom: 1rem; }
+        .share-buttons { display: flex; flex-direction: column; gap: 0.5rem; }
+        .share-btn {
+          padding: 0.5rem 1rem;
+          border: 1px solid #D1D5DB;
+          border-radius: var(--radius-sm);
+          background: transparent;
+          cursor: pointer;
+          transition: all 0.2s;
+          font-family: var(--font-body);
+          text-align: center;
+          color: var(--text-primary);
+        }
+        .share-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+        @media (max-width: 768px) {
+          .detail-layout { grid-template-columns: 1fr; }
+          .detail-hero h1 { font-size: 1.75rem; }
+        }
       `}</style>
     </>
   );

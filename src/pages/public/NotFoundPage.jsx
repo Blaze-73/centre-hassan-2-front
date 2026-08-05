@@ -78,6 +78,7 @@ export default function NotFoundPage() {
           flex-wrap: wrap;
         }
         .notfound-actions .btn { display: inline-flex; }
+        [dir="rtl"] .notfound-actions .btn svg { transform: scaleX(-1); }
         .notfound-contact {
           color: rgba(255,255,255,0.85);
           font-size: 0.95rem;

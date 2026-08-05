@@ -45,6 +45,11 @@
     "figures": "Personnalités clés",
     "awards": "Récompenses"
   },
+  "common": {
+    "retry": "Réessayer",
+    "loading": "Chargement...",
+    "back": "Retour"
+  },
   "events": {
     "title": "Événements",
     "all": "Tous",
@@ -52,6 +57,8 @@
     "past": "Passés",
     "search": "Rechercher un événement...",
     "no_events": "Aucun événement trouvé",
+    "load_error": "Impossible de charger les événements",
+    "load_more": "Charger plus",
     "details": "Détails",
     "register": "S'inscrire",
     "share": "Partager",
@@ -60,30 +67,40 @@
     "time": "Heure",
     "category": "Catégorie",
     "venue": "Lieu",
+    "view": "Changer d'affichage",
     "grid_view": "Vue grille",
     "list_view": "Vue liste",
-    "calendar_view": "Vue calendrier"
+    "calendar_view": "Vue calendrier",
+    "meta_description": "Découvrez tous les événements culturels, conférences et expositions organisés par le Centre Hassan II à Asilah."
   },
   "spaces": {
     "title": "Nos Espaces",
     "capacity": "Capacité",
     "amenities": "Équipements",
     "no_spaces": "Aucun espace trouvé",
-    "details": "Voir détails"
+    "load_error": "Impossible de charger les espaces",
+    "details": "Voir détails",
+    "meta_description": "Découvrez les espaces du Centre Hassan II : salles de conférence, galeries et espaces d'exposition à Asilah."
   },
   "gallery": {
     "title": "Galerie",
     "all": "Toutes",
     "no_images": "Aucune image trouvée",
-    "empty_hint": "La galerie est vide pour le moment."
+    "empty_hint": "La galerie est vide pour le moment.",
+    "load_error": "Impossible de charger la galerie",
+    "meta_description": "Explorez la galerie photo du Centre Hassan II et ses expositions culturelles à Asilah."
   },
   "news": {
     "title": "Actualités",
     "read_more": "Lire la suite",
     "no_news": "Aucun article trouvé",
+    "load_error": "Impossible de charger les actualités",
+    "load_more": "Charger plus",
+    "featured": "À la une",
     "share": "Partager",
     "related": "Articles liés",
-    "by": "Par"
+    "by": "Par",
+    "meta_description": "Suivez l'actualité du Centre Hassan II : annonces, articles et nouvelles culturelles d'Asilah."
   },
   "contact": {
     "title": "Contactez-nous",

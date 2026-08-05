@@ -45,6 +45,11 @@
     "figures": "Key Figures",
     "awards": "Awards"
   },
+  "common": {
+    "retry": "Retry",
+    "loading": "Loading...",
+    "back": "Back"
+  },
   "events": {
     "title": "Events",
     "all": "All",
@@ -52,6 +57,8 @@
     "past": "Past",
     "search": "Search events...",
     "no_events": "No events found",
+    "load_error": "Unable to load events",
+    "load_more": "Load More",
     "details": "Details",
     "register": "Register",
     "share": "Share",
@@ -60,30 +67,40 @@
     "time": "Time",
     "category": "Category",
     "venue": "Venue",
+    "view": "Change view",
     "grid_view": "Grid view",
     "list_view": "List view",
-    "calendar_view": "Calendar view"
+    "calendar_view": "Calendar view",
+    "meta_description": "Discover all cultural events, conferences, and exhibitions hosted by the Centre Hassan II in Asilah."
   },
   "spaces": {
     "title": "Our Spaces",
     "capacity": "Capacity",
     "amenities": "Amenities",
     "no_spaces": "No spaces found",
-    "details": "View Details"
+    "load_error": "Unable to load spaces",
+    "details": "View Details",
+    "meta_description": "Discover the Centre Hassan II spaces: conference halls, galleries, and exhibition areas in Asilah."
   },
   "gallery": {
     "title": "Gallery",
     "all": "All",
     "no_images": "No images found",
-    "empty_hint": "The gallery is empty for now."
+    "empty_hint": "The gallery is empty for now.",
+    "load_error": "Unable to load the gallery",
+    "meta_description": "Explore the Centre Hassan II photo gallery and its cultural exhibitions in Asilah."
   },
   "news": {
     "title": "News",
     "read_more": "Read More",
     "no_news": "No articles found",
+    "load_error": "Unable to load the news",
+    "load_more": "Load More",
+    "featured": "Featured",
     "share": "Share",
     "related": "Related Articles",
-    "by": "By"
+    "by": "By",
+    "meta_description": "Follow the Centre Hassan II news: announcements, articles, and cultural updates from Asilah."
   },
   "contact": {
     "title": "Contact Us",

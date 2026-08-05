@@ -1,25 +1,40 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import GalleryGrid from '../../components/common/GalleryGrid';
-import AnimatedSection from '../../components/common/AnimatedSection';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import PageHero from '../../components/common/PageHero';
+import { SkeletonCards } from '../../components/common/Skeleton';
+import api from '../../services/api';
 
 const categories = ['all', 'conference', 'exhibition', 'workshop', 'cultural'];
 
-const mockImages = [
-  { image_path: '', caption: { fr: 'Conférence 2025' }, category: 'conference' },
-  { image_path: '', caption: { fr: 'Exposition d\'Art' }, category: 'exhibition' },
-];
-
 export default function GalleryPage() {
   const { t } = useTranslation();
-  useDocumentTitle(t('gallery.title'));
-  const [activeCategory, setActiveCategory] = useState('all');
+  useDocumentTitle(t('gallery.title'), { description: t('gallery.meta_description') });
 
-  const filtered = activeCategory === 'all'
-    ? mockImages
-    : mockImages.filter((img) => img.category === activeCategory);
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [reloadKey, setReloadKey] = useState(0);
+
+  useEffect(() => {
+    let ignore = false;
+    api
+      .get('/gallery', { params: activeCategory === 'all' ? {} : { category: activeCategory } })
+      .then((res) => {
+        if (!ignore) setImages(res.data?.data ?? res.data);
+      })
+      .catch((err) => {
+        if (!ignore) setError(err);
+      })
+      .finally(() => {
+        if (!ignore) setLoading(false);
+      });
+    return () => {
+      ignore = true;
+    };
+  }, [activeCategory, reloadKey]);
 
   return (
     <>
@@ -33,14 +48,23 @@ export default function GalleryPage() {
                 key={cat}
                 className={`filter-pill ${activeCategory === cat ? 'active' : ''}`}
                 onClick={() => setActiveCategory(cat)}
+                aria-pressed={activeCategory === cat}
               >
                 {cat === 'all' ? t('gallery.all') : cat}
               </button>
             ))}
           </div>
-          <AnimatedSection>
-            <GalleryGrid images={filtered} />
-          </AnimatedSection>
+
+          {loading ? (
+            <SkeletonCards count={6} height={200} />
+          ) : error ? (
+            <div className="empty-state" role="alert">
+              <h3>{t('gallery.load_error')}</h3>
+              <button className="btn btn-primary" onClick={() => setReloadKey((k) => k + 1)}>{t('common.retry')}</button>
+            </div>
+          ) : (
+            <GalleryGrid images={images} />
+          )}
         </div>
       </section>
 

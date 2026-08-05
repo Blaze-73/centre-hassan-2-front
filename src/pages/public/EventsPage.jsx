@@ -1,31 +1,67 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { FaSearch, FaCalendarAlt, FaTh, FaList, FaCalendarDay } from 'react-icons/fa';
+import { FaSearch, FaCalendarAlt, FaTh, FaList, FaCalendarDay, FaSpinner } from 'react-icons/fa';
 import EventCard from '../../components/common/EventCard';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import PageHero from '../../components/common/PageHero';
+import { SkeletonCards } from '../../components/common/Skeleton';
+import api from '../../services/api';
 
 const categories = ['all', 'conference', 'exhibition', 'workshop', 'concert', 'festival', 'literary', 'ceremony'];
 
-const mockEvents = [
-  { id: 1, slug: 'example', title: { fr: 'Conférence Internationale', en: 'International Conference', ar: 'مؤتمر دولي' }, description: { fr: 'Une conférence internationale sur le dialogue des cultures.' }, category: 'conference', start_date: '2026-09-15', featured_image: '' },
-  { id: 2, slug: 'expo', title: { fr: 'Exposition d\'Art Contemporain', en: 'Contemporary Art Exhibition', ar: 'معرض الفن المعاصر' }, description: { fr: 'Découvrez les œuvres des artistes contemporains.' }, category: 'exhibition', start_date: '2026-10-01', featured_image: '' },
-  { id: 3, slug: 'workshop', title: { fr: 'Atelier de Calligraphie', en: 'Calligraphy Workshop', ar: 'ورشة الخط العربي' }, description: { fr: 'Apprenez l\'art de la calligraphie arabe.' }, category: 'workshop', start_date: '2026-11-10', featured_image: '' },
-];
-
 export default function EventsPage() {
   const { t } = useTranslation();
-  useDocumentTitle(t('events.title'));
+  useDocumentTitle(t('events.title'), { description: t('events.meta_description') });
+
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [error, setError] = useState(null);
+  const [hasMore, setHasMore] = useState(false);
+  const [page, setPage] = useState(1);
+
   const [activeCategory, setActiveCategory] = useState('all');
   const [search, setSearch] = useState('');
   const [view, setView] = useState('grid');
+  const debounceRef = useRef(null);
 
-  const filtered = mockEvents.filter((e) => {
-    const matchCategory = activeCategory === 'all' || e.category === activeCategory;
-    const matchSearch = !search || Object.values(e.title).some((v) => v.toLowerCase().includes(search.toLowerCase()));
-    return matchCategory && matchSearch;
-  });
+  const loadEvents = useCallback(async (pageNum, params, reset = true) => {
+    if (reset) setLoading(true);
+    else setLoadingMore(true);
+    setError(null);
+    try {
+      const res = await api.get('/events', {
+        params: { page: pageNum, category: params.category, search: params.search },
+      });
+      const payload = res.data;
+      const items = payload.data ?? payload;
+      setEvents((prev) => (reset ? items : [...prev, ...items]));
+      setPage(pageNum);
+      setHasMore(Boolean(payload.meta && pageNum < payload.meta.last_page));
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+      setLoadingMore(false);
+    }
+  }, []);
+
+  const currentParams = { category: activeCategory === 'all' ? undefined : activeCategory, search: search.trim() || undefined };
+
+  const reload = () => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => loadEvents(1, currentParams, true), 250);
+  };
+
+  useEffect(() => {
+    reload();
+    return () => debounceRef.current && clearTimeout(debounceRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCategory, search]);
+
+  const handleLoadMore = () => {
+    loadEvents(page + 1, currentParams, false);
+  };
 
   return (
     <>
@@ -40,6 +76,7 @@ export default function EventsPage() {
                   key={cat}
                   className={`filter-pill ${activeCategory === cat ? 'active' : ''}`}
                   onClick={() => setActiveCategory(cat)}
+                  aria-pressed={activeCategory === cat}
                 >
                   {cat === 'all' ? t('events.all') : cat}
                 </button>
@@ -47,15 +84,16 @@ export default function EventsPage() {
             </div>
             <div className="filter-actions">
               <div className="search-box">
-                <FaSearch />
+                <FaSearch aria-hidden="true" />
                 <input
                   type="text"
                   placeholder={t('events.search')}
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
+                  aria-label={t('events.search')}
                 />
               </div>
-              <div className="view-toggles">
+              <div className="view-toggles" role="group" aria-label={t('events.view')}>
                 <button className={`view-btn ${view === 'grid' ? 'active' : ''}`} onClick={() => setView('grid')} aria-label={t('events.grid_view')} aria-pressed={view === 'grid'}><FaTh /></button>
                 <button className={`view-btn ${view === 'list' ? 'active' : ''}`} onClick={() => setView('list')} aria-label={t('events.list_view')} aria-pressed={view === 'list'}><FaList /></button>
                 <button className={`view-btn ${view === 'calendar' ? 'active' : ''}`} onClick={() => setView('calendar')} aria-label={t('events.calendar_view')} aria-pressed={view === 'calendar'}><FaCalendarDay /></button>
@@ -63,17 +101,35 @@ export default function EventsPage() {
             </div>
           </div>
 
-          {filtered.length === 0 ? (
+          {loading ? (
+            <SkeletonCards count={6} />
+          ) : error ? (
+            <div className="empty-state" role="alert">
+              <FaCalendarAlt size={48} style={{ opacity: 0.3, marginBottom: '1rem' }} />
+              <h3>{t('events.load_error')}</h3>
+              <button className="btn btn-primary" onClick={() => reload()}>{t('common.retry')}</button>
+            </div>
+          ) : events.length === 0 ? (
             <div className="empty-state">
               <FaCalendarAlt size={48} style={{ opacity: 0.3, marginBottom: '1rem' }} />
               <h3>{t('events.no_events')}</h3>
             </div>
           ) : (
-            <motion.div layout className={`events-${view}`}>
-              {filtered.map((event, i) => (
-                <EventCard key={event.id} event={event} index={i} />
-              ))}
-            </motion.div>
+            <>
+              <div className={`events-${view}`}>
+                {events.map((event, i) => (
+                  <EventCard key={event.id} event={event} index={i} />
+                ))}
+              </div>
+              {hasMore && (
+                <div className="load-more-wrap">
+                  <button className="btn btn-outline" onClick={handleLoadMore} disabled={loadingMore}>
+                    {loadingMore ? <FaSpinner className="spin" /> : null}
+                    {loadingMore ? t('common.loading') : t('events.load_more')}
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
@@ -136,6 +192,13 @@ export default function EventsPage() {
         .view-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
         .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
         .events-list { display: flex; flex-direction: column; gap: 1rem; }
+        .load-more-wrap {
+          display: flex;
+          justify-content: center;
+          margin-top: 2.5rem;
+        }
+        .spin { animation: spin 0.8s linear infinite; margin-right: 0.5rem; }
+        @keyframes spin { to { transform: rotate(360deg); } }
         @media (max-width: 768px) {
           .filter-bar { flex-direction: column; align-items: stretch; }
           .filter-actions { flex-wrap: wrap; }
