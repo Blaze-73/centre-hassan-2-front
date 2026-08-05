@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 import { fr, enUS, ar } from 'date-fns/locale';
 import { useTranslation } from 'react-i18next';
+import { PLACEHOLDER_IMAGE, handleImageError } from '../../utils/imageFallback';
 
 const locales = { fr, en: enUS, ar };
 
@@ -23,9 +24,10 @@ export default function EventCard({ event, index = 0 }) {
       <Link to={`/events/${event.slug || event.id}`} className="card event-card">
         <div className="event-card-image">
           <img
-            src={event.featured_image || '/images/placeholder-event.jpg'}
+            src={event.featured_image || PLACEHOLDER_IMAGE}
             alt={title}
             loading="lazy"
+            onError={handleImageError}
           />
           <span className={`badge badge-${category}`}>{category}</span>
         </div>

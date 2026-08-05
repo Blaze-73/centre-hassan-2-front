@@ -10,6 +10,7 @@ import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import useFetch from '../../hooks/useFetch';
 import { useJsonLd } from '../../hooks/useJsonLd';
 import { localized } from '../../utils/localize';
+import { handleImageError } from '../../utils/imageFallback';
 import Skeleton from '../../components/common/Skeleton';
 
 const locales = { fr, en: enUS, ar };
@@ -112,7 +113,7 @@ export default function NewsDetailPage() {
           <div className="detail-layout">
             <div className="detail-content">
               {article.featured_image && (
-                <img src={article.featured_image} alt={title} className="detail-image" loading="eager" />
+                <img src={article.featured_image} alt={title} className="detail-image" loading="eager" onError={handleImageError} />
               )}
               <AnimatedSection>
                 <RichText html={content} />

@@ -10,7 +10,7 @@ import api from '../../services/api';
 
 export default function ContactPage() {
   const { t } = useTranslation();
-  useDocumentTitle(t('contact.title'));
+  useDocumentTitle(t('contact.title'), { description: t('contact.meta_description') });
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [sending, setSending] = useState(false);
 
@@ -93,7 +93,14 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-              <div style={{ width: '100%', height: '250px', background: '#E5E7EB', borderRadius: 'var(--radius-md)', marginTop: '2rem' }} />
+              <iframe
+                title={t('contact.map')}
+                src="https://www.google.com/maps?q=Centre+Hassan+II,+Asilah,+Morocco&output=embed"
+                className="contact-map"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </AnimatedSection>
           </div>
         </div>
@@ -156,6 +163,13 @@ export default function ContactPage() {
           justify-content: center;
           background: rgba(200,149,108,0.1);
           border-radius: 50%;
+        }
+        .contact-map {
+          width: 100%;
+          height: 250px;
+          border: 0;
+          border-radius: var(--radius-md);
+          margin-top: 2rem;
         }
         .contact-info-card h4 { font-size: 1rem; font-family: var(--font-body); }
         .contact-info-card p { color: var(--text-secondary); font-size: 0.9rem; }

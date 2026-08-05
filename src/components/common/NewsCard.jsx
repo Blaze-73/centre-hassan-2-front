@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 import { fr, enUS, ar } from 'date-fns/locale';
 import { useTranslation } from 'react-i18next';
+import { PLACEHOLDER_IMAGE, handleImageError } from '../../utils/imageFallback';
 
 const locales = { fr, en: enUS, ar };
 
@@ -21,9 +22,10 @@ export default function NewsCard({ article, index = 0 }) {
       <Link to={`/news/${article.slug || article.id}`} className="card news-card">
         <div className="news-card-image">
           <img
-            src={article.featured_image || '/images/placeholder-news.jpg'}
+            src={article.featured_image || PLACEHOLDER_IMAGE}
             alt={title}
             loading="lazy"
+            onError={handleImageError}
           />
         </div>
         <div className="news-card-body">

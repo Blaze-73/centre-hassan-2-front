@@ -8,6 +8,7 @@ import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import PageHero from '../../components/common/PageHero';
 import { SkeletonCards } from '../../components/common/Skeleton';
 import { localized } from '../../utils/localize';
+import { handleImageError } from '../../utils/imageFallback';
 import api from '../../services/api';
 
 export default function NewsPage() {
@@ -89,7 +90,7 @@ export default function NewsPage() {
                 <AnimatedSection className="featured-news card">
                   <Link to={`/news/${featured.slug || featured.id}`} className="featured-news-link">
                     {featured.featured_image ? (
-                      <img src={featured.featured_image} alt={localized(featured.title, i18n.language)} className="featured-news-image" loading="eager" />
+                      <img src={featured.featured_image} alt={localized(featured.title, i18n.language)} className="featured-news-image" loading="eager" onError={handleImageError} />
                     ) : (
                       <div className="featured-news-placeholder" />
                     )}

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { FaUsers } from 'react-icons/fa';
+import { handleImageError } from '../../utils/imageFallback';
 
 export default function SpaceCard({ space, index = 0 }) {
   const { i18n, t } = useTranslation();
@@ -16,7 +17,7 @@ export default function SpaceCard({ space, index = 0 }) {
     >
       <div className="space-card-image">
         {space.images?.[0] ? (
-          <img src={space.images[0]} alt={name} loading="lazy" />
+          <img src={space.images[0]} alt={name} loading="lazy" onError={handleImageError} />
         ) : (
           <div className="space-card-placeholder" />
         )}

@@ -117,7 +117,9 @@
     "address": "العنوان",
     "address_value": "مركز الحسن الثاني، أصيلة، المغرب",
     "phone_value": "+212 5 39 41 50 00",
-    "email_value": "info@centre-hassan2.ma"
+    "email_value": "info@centre-hassan2.ma",
+    "map": "الموقع على الخريطة",
+    "meta_description": "تواصل مع مركز الحسن الثاني للقاءات الدولية في أصيلة: العنوان والهاتف ونموذج الاتصال."
   },
   "practical": {
     "title": "معلومات عملية",

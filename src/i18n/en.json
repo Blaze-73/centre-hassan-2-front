@@ -117,7 +117,9 @@
     "address": "Address",
     "address_value": "Centre Hassan II, Asilah, Morocco",
     "phone_value": "+212 5 39 41 50 00",
-    "email_value": "info@centre-hassan2.ma"
+    "email_value": "info@centre-hassan2.ma",
+    "map": "Location on the map",
+    "meta_description": "Contact the Centre Hassan II for International Encounters in Asilah: address, phone, and contact form."
   },
   "practical": {
     "title": "Practical Information",

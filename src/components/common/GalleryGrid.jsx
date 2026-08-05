@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import { handleImageError } from '../../utils/imageFallback';
 
 export default function GalleryGrid({ images = [] }) {
   const { t } = useTranslation();
@@ -48,7 +49,7 @@ export default function GalleryGrid({ images = [] }) {
                 }
               }}
             >
-              <img src={src} alt={typeof img === 'object' && img.caption ? img.caption : ''} loading="lazy" />
+              <img src={src} alt={typeof img === 'object' && img.caption ? img.caption : ''} loading="lazy" onError={handleImageError} />
             </motion.div>
           );
         })}
