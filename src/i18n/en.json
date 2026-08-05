@@ -11,7 +11,8 @@
     "admin": "Admin",
     "open_menu": "Open menu",
     "close_menu": "Close menu",
-    "back_to_top": "Back to top"
+    "back_to_top": "Back to top",
+    "skip_to_content": "Skip to main content"
   },
   "hero": {
     "title": "Centre Hassan II for International Encounters",
@@ -146,6 +147,10 @@
     "message": "The page you are looking for does not exist or has been moved.",
     "home": "Back to Home",
     "contact": "Contact Us"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "message": "An unexpected problem interrupted this page. Please try again."
   },
   "admin": {
     "login": "Login",

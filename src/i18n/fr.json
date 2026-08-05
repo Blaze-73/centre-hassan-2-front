@@ -11,7 +11,8 @@
     "admin": "Administration",
     "open_menu": "Ouvrir le menu",
     "close_menu": "Fermer le menu",
-    "back_to_top": "Retour en haut de page"
+    "back_to_top": "Retour en haut de page",
+    "skip_to_content": "Aller au contenu principal"
   },
   "hero": {
     "title": "Centre Hassan II des Rencontres Internationales",
@@ -146,6 +147,10 @@
     "message": "La page que vous cherchez n'existe pas ou a été déplacée.",
     "home": "Retour à l'accueil",
     "contact": "Contactez-nous"
+  },
+  "error": {
+    "title": "Une erreur est survenue",
+    "message": "Un problème inattendu a interrompu l'affichage de cette page. Veuillez réessayer."
   },
   "admin": {
     "login": "Connexion",

@@ -303,6 +303,33 @@ html.lang-ar h6 {
   transform: translateY(1px) scaleX(-1);
 }
 
+.error-boundary-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+
+.error-boundary-card {
+  max-width: 520px;
+}
+
+.error-boundary-card .notfound-code {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.error-boundary-card p {
+  color: var(--text-secondary);
+  margin: 1rem 0 2rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .skeleton {
     animation: none;

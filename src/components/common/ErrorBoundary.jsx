@@ -1,6 +1,7 @@
 import { Component } from 'react';
+import { useTranslation } from 'react-i18next';
 
-export default class ErrorBoundary extends Component {
+class ErrorBoundaryClass extends Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
@@ -11,30 +12,36 @@ export default class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, info) {
-    console.error('ErrorBoundary caught an error:', error, info);
+    console.error('Application error:', error, info);
   }
-
-  handleReload = () => {
-    window.location.reload();
-  };
 
   render() {
     if (this.state.hasError) {
-      return (
-        <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '2rem' }}>
-          <div>
-            <h2 style={{ fontFamily: 'var(--font-heading)', marginBottom: '0.75rem' }}>Une erreur est survenue</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-              Quelque chose s'est mal passé. Rechargez la page pour continuer.
-            </p>
-            <button onClick={this.handleReload} className="btn btn-primary">
-              Recharger la page
-            </button>
-          </div>
-        </div>
-      );
+      return <ErrorFallback onReset={() => this.setState({ hasError: false })} />;
     }
-
     return this.props.children;
   }
+}
+
+function ErrorFallback({ onReset }) {
+  const { t } = useTranslation();
+
+  return (
+    <section className="error-boundary-section">
+      <div className="error-boundary-card">
+        <span className="notfound-code">!</span>
+        <h1>{t('error.title')}</h1>
+        <p>{t('error.message')}</p>
+        <div className="notfound-actions">
+          <button type="button" className="btn btn-primary" onClick={() => { onReset(); window.location.href = '/'; }}>
+            {t('notFound.home')}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function ErrorBoundary({ children }) {
+  return <ErrorBoundaryClass>{children}</ErrorBoundaryClass>;
 }
