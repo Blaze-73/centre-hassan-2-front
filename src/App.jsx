@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router'
+import { useTranslation } from 'react-i18next'
 import ScrollToTop from './components/layout/ScrollToTop'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
@@ -39,9 +40,10 @@ function PageLoader() {
 
 function PublicLayout() {
   const { pathname } = useLocation();
+  const { t } = useTranslation();
   return (
     <>
-      <a href="#main-content" className="skip-link">Aller au contenu principal</a>
+      <a href="#main-content" className="skip-link">{t('nav.skip_to_content')}</a>
       <Navbar />
       <main id="main-content">
         <PageFade key={pathname}>
