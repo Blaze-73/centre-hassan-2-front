@@ -49,6 +49,11 @@ Copiez `.env.example` vers `.env` et ajustez si nécessaire :
 | Variable        | Description                                       |
 | --------------- | ------------------------------------------------- |
 | `VITE_API_URL`  | URL de base de l'API backend (sinon `/api` local) |
+| `VITE_API_PROXY`| Cible du proxy de développement (défaut `http://127.0.0.1:8000`) |
+
+> En développement, le serveur Vite proxifie `/api` vers le backend Laravel local
+> (`php artisan serve`), ce qui évite les soucis de CORS. En production, définissez
+> `VITE_API_URL=https://api.centre-hassan2.ma/api`.
 
 ## 🌍 Internationalisation
 
@@ -66,6 +71,7 @@ La langue choisie est mémorisée dans le navigateur.
 Le frontend communique avec le backend Laravel (`c.h.2-BackEnd`) via Axios (`src/services/api.js`) :
 
 - `VITE_API_URL` définit l'URL de base de l'API (sinon `/api`).
+- En développement, `/api` est proxifié vers le backend (voir `vite.config.js`).
 - Le header `Accept-Language` est envoyé automatiquement pour le contenu multilingue.
 - Le jeton d'authentification est joint en header `Authorization: Bearer <token>`.
 
