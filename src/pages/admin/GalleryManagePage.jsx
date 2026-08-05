@@ -17,7 +17,7 @@ export default function GalleryManagePage() {
     try {
       const res = await api.get('/admin/gallery');
       setImages(res.data.data || []);
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors du chargement de la galerie');
     } finally {
       setLoading(false);
@@ -48,7 +48,7 @@ export default function GalleryManagePage() {
       toast.success('Images uploadées avec succès');
       setShowUpload(false);
       fetchGallery();
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors de l\'upload');
     }
   };
@@ -60,7 +60,7 @@ export default function GalleryManagePage() {
       toast.success('Image supprimée');
       setDeleteTarget(null);
       fetchGallery();
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors de la suppression');
     }
   };

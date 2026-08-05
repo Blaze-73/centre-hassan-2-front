@@ -18,7 +18,7 @@ export default function ContactsPage() {
     try {
       const res = await api.get('/admin/contacts');
       setContacts(res.data.data || []);
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors du chargement des messages');
     } finally {
       setLoading(false);
@@ -50,7 +50,7 @@ export default function ContactsPage() {
       await api.put(`/admin/contacts/${row.id}/read`);
       toast.success('Marqué comme lu');
       fetchContacts();
-    } catch (err) {
+    } catch {
       toast.error('Erreur');
     }
   };
@@ -62,7 +62,7 @@ export default function ContactsPage() {
       toast.success('Message supprimé');
       setDeleteTarget(null);
       fetchContacts();
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors de la suppression');
     }
   };

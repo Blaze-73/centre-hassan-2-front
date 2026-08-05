@@ -6,6 +6,7 @@ import AnimatedSection from '../../components/common/AnimatedSection';
 import Button from '../../components/common/Button';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import PageHero from '../../components/common/PageHero';
+import api from '../../services/api';
 
 export default function ContactPage() {
   const { t } = useTranslation();
@@ -17,11 +18,11 @@ export default function ContactPage() {
     e.preventDefault();
     setSending(true);
     try {
-      await new Promise((r) => setTimeout(r, 1000));
+      await api.post('/contact', form);
       toast.success(t('contact.success'));
       setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-    } catch {
-      toast.error(t('contact.error'));
+    } catch (err) {
+      toast.error(err.response?.data?.message || t('contact.error'));
     } finally {
       setSending(false);
     }
@@ -39,29 +40,29 @@ export default function ContactPage() {
               <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="form-group">
-                    <label>{t('contact.name')}</label>
-                    <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+                    <label htmlFor="contact-name">{t('contact.name')}</label>
+                    <input id="contact-name" type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
                   </div>
                   <div className="form-group">
-                    <label>{t('contact.email')}</label>
-                    <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+                    <label htmlFor="contact-email">{t('contact.email')}</label>
+                    <input id="contact-email" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group">
-                    <label>{t('contact.phone')}</label>
-                    <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                    <label htmlFor="contact-phone">{t('contact.phone')}</label>
+                    <input id="contact-phone" type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
                   </div>
                   <div className="form-group">
-                    <label>{t('contact.subject')}</label>
-                    <input type="text" value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} required />
+                    <label htmlFor="contact-subject">{t('contact.subject')}</label>
+                    <input id="contact-subject" type="text" value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} required />
                   </div>
                 </div>
                 <div className="form-group">
-                  <label>{t('contact.message')}</label>
-                  <textarea rows={6} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
+                  <label htmlFor="contact-message">{t('contact.message')}</label>
+                  <textarea id="contact-message" rows={6} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
                 </div>
-                <Button variant="primary" disabled={sending}>
+                <Button type="submit" variant="primary" disabled={sending}>
                   {sending ? '...' : t('contact.submit')}
                 </Button>
               </form>
@@ -127,7 +128,7 @@ export default function ContactPage() {
         .form-group textarea {
           width: 100%;
           padding: 0.75rem 1rem;
-          border: 1px solid #D1D5DB;
+          border: 1px solid var(--gray-300);
           border-radius: var(--radius-sm);
           font-family: var(--font-body);
           font-size: 0.9rem;

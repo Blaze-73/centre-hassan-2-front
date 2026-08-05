@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
-
 @import './variables.css';
 @import './animations.css';
 @import './rtl.css';
@@ -106,7 +104,7 @@ img {
 }
 
 .btn-accent:hover {
-  background: #C49A47;
+  background: var(--accent-dark);
   transform: translateY(-1px);
 }
 
@@ -116,7 +114,17 @@ img {
 }
 
 .btn-dark:hover {
-  background: #152E3B;
+  background: var(--secondary-dark);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
 }
 
 .card {
@@ -165,4 +173,80 @@ img {
   .section { padding: 3rem 0; }
   .section-title { font-size: 1.75rem; }
   .container { padding: 0 1rem; }
+}
+
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.btn:focus-visible {
+  outline-offset: 3px;
+}
+
+html.lang-ar,
+html.lang-ar body {
+  font-family: var(--font-arabic);
+}
+
+html.lang-ar h1,
+html.lang-ar h2,
+html.lang-ar h3,
+html.lang-ar h4,
+html.lang-ar h5,
+html.lang-ar h6 {
+  font-family: var(--font-arabic);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 2000;
+  padding: 0.75rem 1.5rem;
+  background: var(--secondary);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 1500;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--secondary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.back-to-top:hover {
+  background: var(--primary);
+}
+
+[dir="rtl"] .back-to-top {
+  right: auto;
+  left: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

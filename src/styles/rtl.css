@@ -41,3 +41,31 @@
 [dir="rtl"] .filter-bar {
   flex-direction: row-reverse;
 }
+
+[dir="rtl"] .timeline {
+  padding-left: 0;
+  padding-right: 2rem;
+  border-left: none;
+  border-right: 2px solid var(--primary);
+}
+
+[dir="rtl"] .timeline-dot {
+  left: auto;
+  right: -2.6rem;
+}
+
+[dir="rtl"] .view-btn:first-child {
+  border-radius: 0 4px 4px 0;
+}
+
+[dir="rtl"] .view-btn:last-child {
+  border-radius: 4px 0 0 4px;
+}
+
+[dir="rtl"] .lang-btn:first-child {
+  border-radius: 0 4px 4px 0;
+}
+
+[dir="rtl"] .lang-btn:last-child {
+  border-radius: 4px 0 0 4px;
+}

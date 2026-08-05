@@ -9,6 +9,7 @@ export function ThemeProvider({ children }) {
     localStorage.setItem('lang', lang);
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.classList.toggle('lang-ar', lang === 'ar');
   }, [lang]);
 
   const setLang = useCallback((newLang) => {

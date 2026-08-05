@@ -15,7 +15,7 @@ export default function UsersManagePage() {
     try {
       const res = await api.get('/admin/users');
       setUsers(res.data.data || []);
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors du chargement des utilisateurs');
     } finally {
       setLoading(false);

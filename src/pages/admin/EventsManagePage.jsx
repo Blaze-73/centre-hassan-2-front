@@ -38,7 +38,7 @@ export default function EventsManagePage() {
     },
     {
       header: t('events.category'),
-      render: (row) => <span className="badge badge-{row.category}">{row.category}</span>,
+      render: (row) => <span className={`badge badge-${row.category}`}>{row.category}</span>,
     },
     {
       header: t('events.date'),
@@ -78,7 +78,7 @@ export default function EventsManagePage() {
       toast.success('Événement supprimé');
       setDeleteTarget(null);
       fetchEvents();
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors de la suppression');
     }
   };

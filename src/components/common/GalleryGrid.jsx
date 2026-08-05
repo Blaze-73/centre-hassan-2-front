@@ -38,7 +38,7 @@ export default function GalleryGrid({ images = [] }) {
               transition={{ duration: 0.3, delay: i * 0.05 }}
               onClick={() => { setIndex(i); setOpen(true); }}
             >
-              <img src={src} alt="" loading="lazy" />
+              <img src={src} alt={typeof img === 'object' && img.caption ? img.caption : ''} loading="lazy" />
             </motion.div>
           );
         })}

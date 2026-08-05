@@ -10,7 +10,8 @@
     "practical": "Practical Info",
     "admin": "Admin",
     "open_menu": "Open menu",
-    "close_menu": "Close menu"
+    "close_menu": "Close menu",
+    "back_to_top": "Back to top"
   },
   "hero": {
     "title": "Centre Hassan II for International Encounters",
@@ -58,7 +59,10 @@
     "date": "Date",
     "time": "Time",
     "category": "Category",
-    "venue": "Venue"
+    "venue": "Venue",
+    "grid_view": "Grid view",
+    "list_view": "List view",
+    "calendar_view": "Calendar view"
   },
   "spaces": {
     "title": "Our Spaces",

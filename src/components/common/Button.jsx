@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-export default function Button({ children, variant = 'primary', to, href, onClick, className = '', style, disabled }) {
+export default function Button({ children, variant = 'primary', to, href, onClick, className = '', style, disabled, type = 'button' }) {
   const cls = `btn btn-${variant} ${className}`.trim();
 
   if (to) {
@@ -26,7 +26,7 @@ export default function Button({ children, variant = 'primary', to, href, onClic
 
   return (
     <motion.div whileHover={disabled ? {} : { scale: 1.02 }} whileTap={disabled ? {} : { scale: 0.98 }}>
-      <button className={cls} onClick={onClick} style={style} disabled={disabled}>
+      <button type={type} className={cls} onClick={onClick} style={style} disabled={disabled}>
         {children}
       </button>
     </motion.div>

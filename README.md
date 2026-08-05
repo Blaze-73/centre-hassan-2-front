@@ -56,18 +56,41 @@ Les traductions sont gérées par [i18next](https://www.i18next.com/) dans `src/
 
 - `fr.json` — Français
 - `en.json` — English
-- `ar.json` — العربية (affichage RTL automatique)
+- `ar.json` — العربية (affichage RTL automatique + police Noto Sans Arabic)
 
 Le sélecteur de langue est disponible dans la barre de navigation et le pied de page.
 La langue choisie est mémorisée dans le navigateur.
+
+## 🔌 Intégration API
+
+Le frontend communique avec le backend Laravel (`c.h.2-BackEnd`) via Axios (`src/services/api.js`) :
+
+- `VITE_API_URL` définit l'URL de base de l'API (sinon `/api`).
+- Le header `Accept-Language` est envoyé automatiquement pour le contenu multilingue.
+- Le jeton d'authentification est joint en header `Authorization: Bearer <token>`.
+
+Endpoints utilisés : événements, actualités, espaces, galerie, contact (`POST /api/contact`),
+newsletter (`POST /api/newsletter`) et l'ensemble de l'administration (`/api/admin/*`).
+
+## ✨ Améliorations récentes
+
+- **SEO** : meta Open Graph, Twitter Card, canonical, `hreflang`, JSON-LD, `theme-color`, preconnect Google Fonts
+- **Performance** : découpage du code (routes admin et pages détail chargées à la demande) + chunking des vendors
+- **Accessibilité** : styles `:focus-visible`, liens d'évitement, textes alternatifs, `aria-label`,
+  support `prefers-reduced-motion`
+- **UI/UX** : bouton "retour en haut", défilement fluide entre les pages, police arabe appliquée en RTL,
+  palette de gris standardisée en tokens CSS
+- **Robustesse** : `ErrorBoundary` global, corrections de bugs (boutons d'annulation des formulaires,
+  classe `badge-{category}`), formulaire de contact relié à l'API réelle
+- **Nettoyage** : dépendances inutilisées (Tiptap) et hooks morts supprimés
 
 ## 📁 Structure du projet
 
 ```
 src/
-├── components/   # Composants réutilisables (layout, public, admin)
+├── components/   # Composants réutilisables (layout, public, admin, common)
 ├── context/      # Contextes React (auth, langue/RTL)
-├── hooks/        # Hooks personnalisés (useApi, useAuth, useDocumentTitle)
+├── hooks/        # Hooks personnalisés (useAuth, useDocumentTitle)
 ├── i18n/         # Fichiers de traduction
 ├── pages/        # Pages publiques et admin
 ├── services/     # Client API (Axios)

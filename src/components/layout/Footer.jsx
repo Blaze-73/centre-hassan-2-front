@@ -16,10 +16,10 @@ export default function Footer() {
               {t('home.about_text')}
             </p>
             <div className="footer-social">
-              <a href="#"><FaFacebookF /></a>
-              <a href="#"><FaTwitter /></a>
-              <a href="#"><FaInstagram /></a>
-              <a href="#"><FaYoutube /></a>
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF /></a>
+              <a href="https://www.x.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><FaTwitter /></a>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
+              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><FaYoutube /></a>
             </div>
           </div>
 
@@ -99,9 +99,9 @@ export default function Footer() {
           align-items: center;
           justify-content: center;
           color: #fff;
-          transition: background 0.2s;
+          transition: background 0.2s, transform 0.2s;
         }
-        .footer-social a:hover { background: var(--primary); }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-2px); }
         .footer-bottom {
           margin-top: 3rem;
           padding-top: 2rem;

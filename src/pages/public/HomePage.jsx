@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import { format } from 'date-fns';
-import { fr } from 'date-fns/locale';
+import { fr, enUS, ar } from 'date-fns/locale';
 import { useInView } from 'react-intersection-observer';
 import toast from 'react-hot-toast';
 import AnimatedSection from '../../components/common/AnimatedSection';
@@ -33,11 +33,11 @@ export default function HomePage() {
     e.preventDefault();
     setSubscribing(true);
     try {
-      await api.post('/newsletter/subscribe', { email: newsletterEmail });
+      await api.post('/newsletter', { email: newsletterEmail });
       toast.success(t('home.newsletter_success'));
       setNewsletterEmail('');
-    } catch {
-      toast.error(t('home.newsletter_error'));
+    } catch (err) {
+      toast.error(err.response?.data?.message || t('home.newsletter_error'));
     } finally {
       setSubscribing(false);
     }
@@ -64,6 +64,7 @@ export default function HomePage() {
   }, []);
 
   const lang = i18n.language;
+  const dateLocale = lang === 'ar' ? ar : lang === 'en' ? enUS : fr;
 
   return (
     <>
@@ -133,14 +134,14 @@ export default function HomePage() {
                   <Link key={event.id} to={`/events/${event.slug}`} className="card event-card" style={{ minWidth: '300px', flexShrink: 0, textDecoration: 'none', color: 'inherit' }}>
                     <div className="event-card-img">
                       {event.featured_image ? (
-                        <img src={event.featured_image} alt="" />
+                        <img src={event.featured_image} alt={event.title?.[lang] || event.title?.fr || ''} loading="lazy" />
                       ) : (
                         <div className="event-card-img-placeholder" />
                       )}
                     </div>
                     <div className="event-card-body">
                       <div className="event-card-date">
-                        {event.start_date ? format(new Date(event.start_date), 'dd MMM yyyy', { locale: fr }) : ''}
+                        {event.start_date ? format(new Date(event.start_date), 'dd MMM yyyy', { locale: dateLocale }) : ''}
                       </div>
                       <h3>{event.title?.[lang] || event.title?.fr || event.title?.en || ''}</h3>
                       <p className="event-card-desc">
@@ -175,7 +176,7 @@ export default function HomePage() {
                     <h3>{space.name?.[lang] || space.name?.fr || ''}</h3>
                     <p>{space.description?.[lang] || space.description?.fr || ''}</p>
                     <div className="space-card-meta">
-                      <span><strong>{space.capacity}</strong> personnes</span>
+                      <span><strong>{space.capacity}</strong> {t('spaces.capacity')}</span>
                       {space.amenities?.slice(0, 3).map((a, j) => (
                         <span key={j} className="badge-amenity">{a}</span>
                       ))}
@@ -202,7 +203,7 @@ export default function HomePage() {
               {gallery.slice(0, 6).map((item, i) => (
                 <AnimatedSection key={item.id} delay={i * 0.05} className="gallery-preview-item">
                   {item.image_path ? (
-                    <img src={item.image_path} alt="" />
+                    <img src={item.image_path} alt={item.caption || t('gallery.title')} loading="lazy" />
                   ) : (
                     <div className="gallery-placeholder" />
                   )}

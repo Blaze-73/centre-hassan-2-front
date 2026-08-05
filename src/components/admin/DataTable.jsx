@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiSearch, FiEdit2, FiTrash2, FiPlus, FiChevronDown } from 'react-icons/fi';
+import { FiSearch, FiEdit2, FiTrash2, FiPlus } from 'react-icons/fi';
 import Button from '../common/Button';
 import { motion } from 'framer-motion';
 

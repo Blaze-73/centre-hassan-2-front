@@ -44,15 +44,15 @@ export default function AdminLayout() {
       <div className="admin-main">
         <header className="admin-topbar">
           <div className="topbar-left">
-            <button className="topbar-toggle" onClick={() => setMobileOpen(true)}>
+            <button className="topbar-toggle" onClick={() => setMobileOpen(true)} aria-label={t('nav.open_menu')}>
               <FiMenu size={20} />
             </button>
-            <button className="topbar-collapse" onClick={() => setCollapsed(!collapsed)}>
+            <button className="topbar-collapse" onClick={() => setCollapsed(!collapsed)} aria-label={collapsed ? 'Déplier le panneau' : 'Replier le panneau'}>
               <FiChevronLeft size={18} style={{ transform: collapsed ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }} />
             </button>
           </div>
           <div className="topbar-right">
-            <button className="topbar-icon-btn">
+            <button className="topbar-icon-btn" aria-label="Notifications">
               <FiBell size={18} />
             </button>
             <div className="topbar-user">

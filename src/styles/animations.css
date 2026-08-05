@@ -52,3 +52,16 @@
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up,
+  .stagger-enter,
+  .stagger-enter-active,
+  .card-hover,
+  .hero-ken-burns {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

@@ -56,9 +56,9 @@ export default function EventsPage() {
                 />
               </div>
               <div className="view-toggles">
-                <button className={`view-btn ${view === 'grid' ? 'active' : ''}`} onClick={() => setView('grid')}><FaTh /></button>
-                <button className={`view-btn ${view === 'list' ? 'active' : ''}`} onClick={() => setView('list')}><FaList /></button>
-                <button className={`view-btn ${view === 'calendar' ? 'active' : ''}`} onClick={() => setView('calendar')}><FaCalendarDay /></button>
+                <button className={`view-btn ${view === 'grid' ? 'active' : ''}`} onClick={() => setView('grid')} aria-label={t('events.grid_view')} aria-pressed={view === 'grid'}><FaTh /></button>
+                <button className={`view-btn ${view === 'list' ? 'active' : ''}`} onClick={() => setView('list')} aria-label={t('events.list_view')} aria-pressed={view === 'list'}><FaList /></button>
+                <button className={`view-btn ${view === 'calendar' ? 'active' : ''}`} onClick={() => setView('calendar')} aria-label={t('events.calendar_view')} aria-pressed={view === 'calendar'}><FaCalendarDay /></button>
               </div>
             </div>
           </div>

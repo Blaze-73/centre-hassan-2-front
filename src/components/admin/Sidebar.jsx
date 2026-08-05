@@ -15,7 +15,7 @@ const links = [
   { to: '/admin/contacts', label: 'contacts', icon: FiMail },
 ];
 
-export default function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose, onLogout }) {
+export default function Sidebar({ collapsed, mobileOpen, onMobileClose, onLogout }) {
   const { t } = useTranslation();
 
   const sidebarContent = (

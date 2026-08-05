@@ -20,7 +20,7 @@ export default function NewsManagePage() {
     try {
       const res = await api.get('/admin/news');
       setArticles(res.data.data || []);
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors du chargement des actualités');
     } finally {
       setLoading(false);
@@ -73,7 +73,7 @@ export default function NewsManagePage() {
       toast.success('Article supprimé');
       setDeleteTarget(null);
       fetchNews();
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors de la suppression');
     }
   };

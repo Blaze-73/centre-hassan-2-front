@@ -10,7 +10,8 @@
     "practical": "Infos pratiques",
     "admin": "Administration",
     "open_menu": "Ouvrir le menu",
-    "close_menu": "Fermer le menu"
+    "close_menu": "Fermer le menu",
+    "back_to_top": "Retour en haut de page"
   },
   "hero": {
     "title": "Centre Hassan II des Rencontres Internationales",
@@ -58,7 +59,10 @@
     "date": "Date",
     "time": "Heure",
     "category": "Catégorie",
-    "venue": "Lieu"
+    "venue": "Lieu",
+    "grid_view": "Vue grille",
+    "list_view": "Vue liste",
+    "calendar_view": "Vue calendrier"
   },
   "spaces": {
     "title": "Nos Espaces",

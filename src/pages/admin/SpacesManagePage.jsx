@@ -18,7 +18,7 @@ export default function SpacesManagePage() {
     try {
       const res = await api.get('/admin/spaces');
       setSpaces(res.data.data || []);
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors du chargement des espaces');
     } finally {
       setLoading(false);
@@ -58,7 +58,7 @@ export default function SpacesManagePage() {
       toast.success('Espace supprimé');
       setDeleteTarget(null);
       fetchSpaces();
-    } catch (err) {
+    } catch {
       toast.error('Erreur lors de la suppression');
     }
   };
