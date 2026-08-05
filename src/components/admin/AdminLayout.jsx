@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, Navigate, useNavigate } from 'react-router-dom';
+import { Outlet, Navigate, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { FiMenu, FiBell, FiChevronLeft } from 'react-icons/fi';
 import { useAuth } from '../../hooks/useAuth';

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { FaArrowRight } from 'react-icons/fa';
 import { format } from 'date-fns';
 import { fr, enUS, ar } from 'date-fns/locale';
