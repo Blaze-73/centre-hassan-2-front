@@ -27,7 +27,10 @@ export default function NewsManagePage() {
     }
   };
 
-  useEffect(() => { fetchNews(); }, []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchNews();
+  }, []);
 
   const columns = [
     { header: 'ID', accessor: 'id' },

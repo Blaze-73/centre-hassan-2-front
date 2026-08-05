@@ -25,7 +25,10 @@ export default function SpacesManagePage() {
     }
   };
 
-  useEffect(() => { fetchSpaces(); }, []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchSpaces();
+  }, []);
 
   const columns = [
     { header: 'ID', accessor: 'id' },

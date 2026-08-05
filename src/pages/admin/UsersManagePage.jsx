@@ -22,7 +22,10 @@ export default function UsersManagePage() {
     }
   };
 
-  useEffect(() => { fetchUsers(); }, []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchUsers();
+  }, []);
 
   const columns = [
     { header: 'ID', accessor: 'id' },

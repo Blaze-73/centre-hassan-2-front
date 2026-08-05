@@ -24,7 +24,10 @@ export default function GalleryManagePage() {
     }
   };
 
-  useEffect(() => { fetchGallery(); }, []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchGallery();
+  }, []);
 
   const renderCaption = (caption) => {
     if (!caption) return '-';

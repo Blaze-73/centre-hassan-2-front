@@ -25,7 +25,10 @@ export default function ContactsPage() {
     }
   };
 
-  useEffect(() => { fetchContacts(); }, []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchContacts();
+  }, []);
 
   const columns = [
     { header: 'Nom', accessor: 'name' },
