@@ -8,6 +8,7 @@ import RichText from '../../components/common/RichText';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import useFetch from '../../hooks/useFetch';
+import { useJsonLd } from '../../hooks/useJsonLd';
 import { localized } from '../../utils/localize';
 import Skeleton from '../../components/common/Skeleton';
 
@@ -39,6 +40,27 @@ export default function NewsDetailPage() {
   });
 
   const shareLinks = article ? buildShareLinks(window.location.href, title) : [];
+
+  useJsonLd(
+    article
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'NewsArticle',
+          headline: title,
+          description: content.replace(/<[^>]*>/g, '').substring(0, 300),
+          datePublished: article.created_at,
+          dateModified: article.updated_at || article.created_at,
+          image: article.featured_image || undefined,
+          author: { '@type': 'Organization', name: 'Centre Hassan II des Rencontres Internationales' },
+          publisher: {
+            '@type': 'Organization',
+            name: 'Centre Hassan II des Rencontres Internationales',
+            url: 'https://www.centre-hassan2.ma/',
+          },
+          mainEntityOfPage: window.location.href,
+        }
+      : null,
+  );
 
   if (loading) {
     return (

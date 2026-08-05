@@ -8,6 +8,7 @@ import RichText from '../../components/common/RichText';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import useFetch from '../../hooks/useFetch';
+import { useJsonLd } from '../../hooks/useJsonLd';
 import { localized } from '../../utils/localize';
 import Skeleton from '../../components/common/Skeleton';
 
@@ -40,6 +41,27 @@ export default function EventDetailPage() {
 
   const shareLinks = event ? buildShareLinks(window.location.href, title) : [];
 
+  const spaceName = event ? (event.space ? localized(event.space.name, lang) : null) : null;
+
+  useJsonLd(
+    event
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'Event',
+          name: title,
+          description: description.replace(/<[^>]*>/g, '').substring(0, 300),
+          startDate: event.start_date,
+          endDate: event.end_date || undefined,
+          image: event.featured_image || undefined,
+          location: {
+            '@type': 'Place',
+            name: spaceName || 'Centre Hassan II des Rencontres Internationales',
+            address: { '@type': 'PostalAddress', addressLocality: 'Asilah', addressCountry: 'MA' },
+          },
+        }
+      : null,
+  );
+
   if (loading) {
     return (
       <section className="section" style={{ paddingTop: '8rem' }}>
@@ -65,8 +87,6 @@ export default function EventDetailPage() {
       </section>
     );
   }
-
-  const spaceName = event.space ? localized(event.space.name, lang) : null;
 
   return (
     <>
