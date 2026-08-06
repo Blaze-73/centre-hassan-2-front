@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import ScrollToTop from './components/layout/ScrollToTop'
 import Navbar from './components/layout/Navbar'
+import BottomNav from './components/layout/BottomNav'
 import Footer from './components/layout/Footer'
 import BackToTop from './components/common/BackToTop'
 import PageFade from './components/common/PageFade'
@@ -65,6 +66,7 @@ function PublicLayout() {
         </PageFade>
       </main>
       <Footer />
+      <BottomNav />
     </>
   )
 }
