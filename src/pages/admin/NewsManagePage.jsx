@@ -46,7 +46,7 @@ export default function NewsManagePage() {
       header: t('admin.status_draft'),
       render: (row) => (
         <span style={{ color: row.status === 'published' ? 'var(--success)' : 'var(--accent)', fontWeight: 600 }}>
-          {row.status}
+          {t(`admin.status_${row.status}`, { defaultValue: row.status })}
         </span>
       ),
     },

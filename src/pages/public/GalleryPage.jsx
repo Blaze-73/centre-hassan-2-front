@@ -50,7 +50,7 @@ export default function GalleryPage() {
                 onClick={() => setActiveCategory(cat)}
                 aria-pressed={activeCategory === cat}
               >
-                {cat === 'all' ? t('gallery.all') : cat}
+                {cat === 'all' ? t('gallery.all') : t(`events.category_${cat}`)}
               </button>
             ))}
           </div>

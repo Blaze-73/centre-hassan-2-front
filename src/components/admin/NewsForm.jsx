@@ -44,27 +44,27 @@ export default function NewsForm({ article, onSave, onCancel }) {
 
         <div className="form-group">
           <label>{t('events.title')} *</label>
-          <input value={form.title[activeLang]} onChange={(e) => updateField('title', e.target.value)} required placeholder={`Titre en ${activeLang}`} />
+          <input value={form.title[activeLang]} onChange={(e) => updateField('title', e.target.value)} required placeholder={t('form.title_in', { lang: t(`form.lang_${activeLang}`) })} />
         </div>
 
         <div className="form-group">
-          <label>Contenu *</label>
-          <textarea rows={10} value={form.content[activeLang]} onChange={(e) => updateField('content', e.target.value)} required placeholder={`Contenu en ${activeLang}`} />
+          <label>{t('form.content')} *</label>
+          <textarea rows={10} value={form.content[activeLang]} onChange={(e) => updateField('content', e.target.value)} required placeholder={t('form.content_in', { lang: t(`form.lang_${activeLang}`) })} />
         </div>
 
         <div className="form-row">
           <div className="form-group">
-            <label>Statut</label>
+            <label>{t('form.status')}</label>
             <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}>
               <option value="draft">{t('admin.status_draft')}</option>
               <option value="published">{t('admin.status_published')}</option>
             </select>
           </div>
           <div className="form-group">
-            <label>À la une</label>
+            <label>{t('form.featured')}</label>
             <label className="checkbox-label">
               <input type="checkbox" checked={form.is_featured} onChange={(e) => setForm({ ...form, is_featured: e.target.checked })} />
-              <span>Article à la une</span>
+              <span>{t('form.article_featured')}</span>
             </label>
           </div>
         </div>

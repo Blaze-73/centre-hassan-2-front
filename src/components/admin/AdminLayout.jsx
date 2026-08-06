@@ -49,12 +49,12 @@ export default function AdminLayout() {
             <button className="topbar-toggle" onClick={() => setMobileOpen(true)} aria-label={t('nav.open_menu')}>
               <FiMenu size={20} />
             </button>
-            <button className="topbar-collapse" onClick={() => setCollapsed(!collapsed)} aria-label={collapsed ? 'Déplier le panneau' : 'Replier le panneau'}>
+            <button className="topbar-collapse" onClick={() => setCollapsed(!collapsed)} aria-label={collapsed ? t('admin.expand_panel') : t('admin.collapse_panel')}>
               <FiChevronLeft size={18} style={{ transform: collapsed ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s' }} />
             </button>
           </div>
           <div className="topbar-right">
-            <button className="topbar-icon-btn" aria-label="Notifications">
+            <button className="topbar-icon-btn" aria-label={t('admin.notifications')}>
               <FiBell size={18} />
             </button>
             <div className="topbar-user">
@@ -77,10 +77,10 @@ export default function AdminLayout() {
 
       <ConfirmModal
         open={showLogoutModal}
-        title="Déconnexion"
-        message="Êtes-vous sûr de vouloir vous déconnecter ?"
-        confirmLabel="Se déconnecter"
-        cancelLabel="Annuler"
+        title={t('admin.logout_title')}
+        message={t('admin.logout_message')}
+        confirmLabel={t('admin.logout_confirm')}
+        cancelLabel={t('admin.cancel')}
         variant="warning"
         onConfirm={handleLogout}
         onCancel={() => setShowLogoutModal(false)}

@@ -35,7 +35,7 @@ export default function UsersManagePage() {
       header: 'Rôle',
       render: (row) => (
         <span className="badge" style={{ background: row.role === 'admin' ? '#FEE2E2' : '#DBEAFE', color: row.role === 'admin' ? '#991B1B' : '#1E40AF', padding: '0.2rem 0.6rem', borderRadius: 9999, fontSize: '0.75rem', fontWeight: 600 }}>
-          {row.role}
+          {t(`admin.role_${row.role}`, { defaultValue: row.role })}
         </span>
       ),
     },

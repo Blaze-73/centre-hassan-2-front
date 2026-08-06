@@ -6,7 +6,7 @@ export default function Breadcrumbs({ items }) {
   const { t } = useTranslation();
 
   return (
-    <nav className="breadcrumbs" aria-label="Breadcrumb">
+    <nav className="breadcrumbs" aria-label={t('common.breadcrumb')}>
       <Link to="/">{t('nav.home')}</Link>
       {items.map((item, i) => {
         const last = i === items.length - 1;

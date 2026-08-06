@@ -45,7 +45,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-col">
-            <h4>Langue</h4>
+            <h4>{t('footer.language')}</h4>
             <LanguageSwitcher />
           </div>
         </div>

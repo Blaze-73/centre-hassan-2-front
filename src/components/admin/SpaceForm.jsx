@@ -47,22 +47,22 @@ export default function SpaceForm({ space, onSave, onCancel }) {
 
         <div className="form-group">
           <label>{t('events.title')} *</label>
-          <input value={form.name[activeLang]} onChange={(e) => updateField('name', e.target.value)} required placeholder={`Nom en ${activeLang}`} />
+          <input value={form.name[activeLang]} onChange={(e) => updateField('name', e.target.value)} required placeholder={t('form.name_in', { lang: t(`form.lang_${activeLang}`) })} />
         </div>
 
         <div className="form-group">
           <label>{t('contact.message')}</label>
-          <textarea rows={4} value={form.description[activeLang]} onChange={(e) => updateField('description', e.target.value)} placeholder={`Description en ${activeLang}`} />
+          <textarea rows={4} value={form.description[activeLang]} onChange={(e) => updateField('description', e.target.value)} placeholder={t('form.description_in', { lang: t(`form.lang_${activeLang}`) })} />
         </div>
 
         <div className="form-row">
           <div className="form-group">
             <label>{t('spaces.capacity')} *</label>
-            <input type="number" value={form.capacity} onChange={(e) => setForm({ ...form, capacity: e.target.value })} required min={1} placeholder="Ex: 500" />
+            <input type="number" value={form.capacity} onChange={(e) => setForm({ ...form, capacity: e.target.value })} required min={1} placeholder={t('form.example_capacity')} />
           </div>
           <div className="form-group">
             <label>{t('spaces.amenities')}</label>
-            <input value={form.amenities} onChange={(e) => setForm({ ...form, amenities: e.target.value })} placeholder="Projecteur, Sonorisation, Wi-Fi" />
+            <input value={form.amenities} onChange={(e) => setForm({ ...form, amenities: e.target.value })} placeholder={t('form.amenities_placeholder')} />
           </div>
         </div>
 

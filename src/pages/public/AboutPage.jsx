@@ -5,15 +5,15 @@ import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import PageHero from '../../components/common/PageHero';
 
 const timeline = [
-  { year: '1978', event: 'Foundation of the Asilah Moussem' },
-  { year: '1988', event: 'Inauguration of Centre Hassan II' },
-  { year: '2024', event: 'Present — Cultural hub of Morocco' },
+  { year: '1978', key: 'timeline_1978' },
+  { year: '1988', key: 'timeline_1988' },
+  { year: '2024', key: 'timeline_2024' },
 ];
 
 const figures = [
-  { name: 'Mohamed Benaïssa', role: 'Founder & Former Minister' },
-  { name: 'Mohammed Melehi', role: 'Renowned Artist' },
-  { name: 'King Mohammed VI', role: 'Royal Patron' },
+  { name: 'Mohamed Benaïssa', key: 'figure_benaissa' },
+  { name: 'Mohammed Melehi', key: 'figure_melehi' },
+  { name: 'King Mohammed VI', key: 'figure_mohammed6' },
 ];
 
 export default function AboutPage() {
@@ -42,7 +42,7 @@ export default function AboutPage() {
       <section className="section" style={{ background: '#fff' }}>
         <div className="container">
           <AnimatedSection>
-            <h2 className="section-title">Timeline</h2>
+            <h2 className="section-title">{t('about.timeline_title')}</h2>
           </AnimatedSection>
           <div className="timeline">
             {timeline.map((item, i) => (
@@ -50,7 +50,7 @@ export default function AboutPage() {
                 <div className="timeline-dot" />
                 <div className="timeline-content">
                   <span className="timeline-year">{item.year}</span>
-                  <p>{item.event}</p>
+                  <p>{t(`about.${item.key}`)}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -68,7 +68,7 @@ export default function AboutPage() {
               <AnimatedSection key={i} delay={i * 0.15} className="card figure-card">
                 <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'var(--primary)', opacity: 0.2, margin: '0 auto 1rem' }} />
                 <h3>{figure.name}</h3>
-                <p style={{ color: 'var(--text-secondary)' }}>{figure.role}</p>
+                <p style={{ color: 'var(--text-secondary)' }}>{t(`about.${figure.key}`)}</p>
               </AnimatedSection>
             ))}
           </div>

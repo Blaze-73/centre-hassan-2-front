@@ -66,7 +66,7 @@ export default function DataTable({
                 {columns.map((col, i) => (
                   <th key={i}>{col.header}</th>
                 ))}
-                {(onEdit || onDelete) && <th style={{ width: '100px' }}>Actions</th>}
+                {(onEdit || onDelete) && <th style={{ width: '100px' }}>{t('admin.actions')}</th>}
               </tr>
             </thead>
             <tbody>
@@ -93,12 +93,12 @@ export default function DataTable({
                       <td>
                         <div className="table-actions">
                           {onEdit && (
-                            <button className="table-action-btn edit" onClick={() => onEdit(row)} title="Modifier">
+                            <button className="table-action-btn edit" onClick={() => onEdit(row)} title={t('admin.edit')}>
                               <FiEdit2 />
                             </button>
                           )}
                           {onDelete && (
-                            <button className="table-action-btn delete" onClick={() => onDelete(row)} title="Supprimer">
+                            <button className="table-action-btn delete" onClick={() => onDelete(row)} title={t('admin.delete')}>
                               <FiTrash2 />
                             </button>
                           )}
@@ -140,12 +140,12 @@ export default function DataTable({
                 <div className="mobile-card-actions">
                   {onEdit && (
                     <button className="mobile-action-btn edit" onClick={() => onEdit(row)}>
-                      <FiEdit2 /> Modifier
+                      <FiEdit2 /> {t('admin.edit')}
                     </button>
                   )}
                   {onDelete && (
                     <button className="mobile-action-btn delete" onClick={() => onDelete(row)}>
-                      <FiTrash2 /> Supprimer
+                      <FiTrash2 /> {t('admin.delete')}
                     </button>
                   )}
                 </div>

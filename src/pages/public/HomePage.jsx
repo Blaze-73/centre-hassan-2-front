@@ -147,7 +147,7 @@ export default function HomePage() {
                       <p className="event-card-desc">
                         {event.description?.[lang] || event.description?.fr || ''}
                       </p>
-                      <span className="event-card-category">{event.category}</span>
+                      <span className="event-card-category">{t(`events.category_${event.category}`, { defaultValue: event.category })}</span>
                     </div>
                   </Link>
                 ))}

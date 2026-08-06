@@ -44,12 +44,26 @@
     "founded": "Fondation",
     "founded_text": "Le Centre a été inauguré en 1988 par le Roi Hassan II.",
     "figures": "Personnalités clés",
-    "awards": "Récompenses"
+    "awards": "Récompenses",
+    "timeline_title": "Chronologie",
+    "timeline_1978": "Fondation du Moussem d'Asilah",
+    "timeline_1988": "Inauguration du Centre Hassan II",
+    "timeline_2024": "Aujourd'hui — Carrefour culturel du Maroc",
+    "figure_benaissa": "Fondateur et ancien ministre",
+    "figure_melehi": "Artiste de renom",
+    "figure_mohammed6": "Patron royal"
   },
   "common": {
     "retry": "Réessayer",
     "loading": "Chargement...",
-    "back": "Retour"
+    "back": "Retour",
+    "language": "Langue",
+    "breadcrumb": "Fil d'Ariane",
+    "close": "Fermer",
+    "yes": "Oui",
+    "no": "Non",
+    "read": "Lu",
+    "unread": "Non lu"
   },
   "events": {
     "title": "Événements",
@@ -72,7 +86,15 @@
     "grid_view": "Vue grille",
     "list_view": "Vue liste",
     "calendar_view": "Vue calendrier",
-    "meta_description": "Découvrez tous les événements culturels, conférences et expositions organisés par le Centre Hassan II à Asilah."
+    "meta_description": "Découvrez tous les événements culturels, conférences et expositions organisés par le Centre Hassan II à Asilah.",
+    "category_conference": "Conférence",
+    "category_exhibition": "Exposition",
+    "category_workshop": "Atelier",
+    "category_concert": "Concert",
+    "category_festival": "Festival",
+    "category_literary": "Littéraire",
+    "category_ceremony": "Cérémonie",
+    "category_cultural": "Culturel"
   },
   "spaces": {
     "title": "Nos Espaces",
@@ -140,7 +162,8 @@
   "footer": {
     "rights": "Tous droits réservés",
     "follow_us": "Suivez-nous",
-    "quick_links": "Liens rapides"
+    "quick_links": "Liens rapides",
+    "language": "Langue"
   },
   "notFound": {
     "title": "Page introuvable",
@@ -179,6 +202,40 @@
     "confirm_delete": "Confirmer la suppression ?",
     "email": "Email",
     "password": "Mot de passe",
-    "login_btn": "Se connecter"
+    "login_btn": "Se connecter",
+    "notifications": "Notifications",
+    "expand_panel": "Déplier le panneau",
+    "collapse_panel": "Replier le panneau",
+    "logout_title": "Déconnexion",
+    "logout_message": "Êtes-vous sûr de vouloir vous déconnecter ?",
+    "logout_confirm": "Se déconnecter",
+    "back_to_site": "Retour au site",
+    "back_to_public_site": "Retour au site public",
+    "actions": "Actions",
+    "role_admin": "Administrateur",
+    "role_editor": "Éditeur",
+    "delete_title": "Supprimer",
+    "delete_confirm": "Supprimer",
+    "delete_cancel": "Annuler"
+  },
+  "form": {
+    "title_in": "Titre en {{lang}}",
+    "description_in": "Description en {{lang}}",
+    "name_in": "Nom en {{lang}}",
+    "content_in": "Contenu en {{lang}}",
+    "content": "Contenu",
+    "space": "Espace",
+    "status": "Statut",
+    "select_space": "Sélectionner un espace",
+    "start_date": "Date début",
+    "end_date": "Date fin",
+    "featured": "À la une",
+    "event_featured": "Événement à la une",
+    "article_featured": "Article à la une",
+    "example_capacity": "Ex: 500",
+    "amenities_placeholder": "Projecteur, Sonorisation, Wi-Fi",
+    "lang_fr": "français",
+    "lang_en": "anglais",
+    "lang_ar": "arabe"
   }
 }

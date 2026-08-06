@@ -78,7 +78,7 @@ export default function EventsPage() {
                   onClick={() => setActiveCategory(cat)}
                   aria-pressed={activeCategory === cat}
                 >
-                  {cat === 'all' ? t('events.all') : cat}
+                  {cat === 'all' ? t('events.all') : t(`events.category_${cat}`)}
                 </button>
               ))}
             </div>

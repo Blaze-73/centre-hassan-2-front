@@ -52,7 +52,7 @@ export default function Sidebar({ collapsed, mobileOpen, onMobileClose, onLogout
       <div className="sidebar-footer">
         <a href="/" className="sidebar-link" style={{ textDecoration: 'none', display: 'flex' }}>
           <FiExternalLink size={20} />
-          <span>Retour au site</span>
+          <span>{t('admin.back_to_site')}</span>
         </a>
         <button className="sidebar-link logout-btn" onClick={onLogout}>
           <FiLogOut size={20} />

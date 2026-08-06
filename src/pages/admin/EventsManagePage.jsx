@@ -41,7 +41,7 @@ export default function EventsManagePage() {
     },
     {
       header: t('events.category'),
-      render: (row) => <span className={`badge badge-${row.category}`}>{row.category}</span>,
+      render: (row) => <span className={`badge badge-${row.category}`}>{t(`events.category_${row.category}`)}</span>,
     },
     {
       header: t('events.date'),
@@ -51,7 +51,7 @@ export default function EventsManagePage() {
       header: t('admin.status_draft'),
       render: (row) => (
         <span style={{ color: row.status === 'published' ? 'var(--success)' : row.status === 'cancelled' ? 'var(--error)' : 'var(--accent)', fontWeight: 600 }}>
-          {row.status}
+          {t(`admin.status_${row.status}`, { defaultValue: row.status })}
         </span>
       ),
     },

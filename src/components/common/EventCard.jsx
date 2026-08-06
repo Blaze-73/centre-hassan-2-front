@@ -8,7 +8,7 @@ import { PLACEHOLDER_IMAGE, handleImageError } from '../../utils/imageFallback';
 const locales = { fr, en: enUS, ar };
 
 export default function EventCard({ event, index = 0 }) {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const locale = locales[i18n.language] || fr;
 
   const category = event.category || 'conference';
@@ -29,7 +29,7 @@ export default function EventCard({ event, index = 0 }) {
             loading="lazy"
             onError={handleImageError}
           />
-          <span className={`badge badge-${category}`}>{category}</span>
+          <span className={`badge badge-${category}`}>{t(`events.category_${category}`, { defaultValue: category })}</span>
         </div>
         <div className="event-card-body">
           <div className="event-card-date">

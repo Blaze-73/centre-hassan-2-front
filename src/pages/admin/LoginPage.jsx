@@ -80,7 +80,7 @@ export default function LoginPage() {
           </button>
           <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
             <Link to="/" style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-              <FiArrowLeft size={14} /> Retour au site public
+              <FiArrowLeft size={14} /> {t('admin.back_to_public_site')}
             </Link>
           </div>
         </form>

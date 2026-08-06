@@ -54,12 +54,12 @@ export default function EventForm({ event, onSave, onCancel }) {
 
         <div className="form-group">
           <label>{t('events.title')} *</label>
-          <input value={form.title[activeLang]} onChange={(e) => updateLangField('title', e.target.value)} required placeholder={`Titre en ${activeLang}`} />
+          <input value={form.title[activeLang]} onChange={(e) => updateLangField('title', e.target.value)} required placeholder={t('form.title_in', { lang: t(`form.lang_${activeLang}`) })} />
         </div>
 
         <div className="form-group">
           <label>{t('contact.message')}</label>
-          <textarea rows={4} value={form.description[activeLang]} onChange={(e) => updateLangField('description', e.target.value)} placeholder={`Description en ${activeLang}`} />
+          <textarea rows={4} value={form.description[activeLang]} onChange={(e) => updateLangField('description', e.target.value)} placeholder={t('form.description_in', { lang: t(`form.lang_${activeLang}`) })} />
         </div>
 
         <div className="form-row">
@@ -67,14 +67,14 @@ export default function EventForm({ event, onSave, onCancel }) {
             <label>{t('events.category')}</label>
             <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>
               {['conference', 'exhibition', 'workshop', 'concert', 'festival', 'literary', 'ceremony'].map((c) => (
-                <option key={c} value={c}>{c}</option>
+                <option key={c} value={c}>{t(`events.category_${c}`)}</option>
               ))}
             </select>
           </div>
           <div className="form-group">
-            <label>Espace</label>
+            <label>{t('form.space')}</label>
             <select value={form.space_id} onChange={(e) => setForm({ ...form, space_id: e.target.value })}>
-              <option value="">Sélectionner un espace</option>
+              <option value="">{t('form.select_space')}</option>
               {spaces.map((s) => (
                 <option key={s.id} value={s.id}>{s.name?.fr || s.name?.en || s.name}</option>
               ))}
@@ -84,7 +84,7 @@ export default function EventForm({ event, onSave, onCancel }) {
 
         <div className="form-row">
           <div className="form-group">
-            <label>Statut</label>
+            <label>{t('form.status')}</label>
             <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}>
               <option value="draft">{t('admin.status_draft')}</option>
               <option value="published">{t('admin.status_published')}</option>
@@ -92,21 +92,21 @@ export default function EventForm({ event, onSave, onCancel }) {
             </select>
           </div>
           <div className="form-group">
-            <label>À la une</label>
+            <label>{t('form.featured')}</label>
             <label className="checkbox-label">
               <input type="checkbox" checked={form.is_featured} onChange={(e) => setForm({ ...form, is_featured: e.target.checked })} />
-              <span>Événement à la une</span>
+              <span>{t('form.event_featured')}</span>
             </label>
           </div>
         </div>
 
         <div className="form-row">
           <div className="form-group">
-            <label>Date début *</label>
+            <label>{t('form.start_date')} *</label>
             <input type="datetime-local" value={form.start_date} onChange={(e) => setForm({ ...form, start_date: e.target.value })} required />
           </div>
           <div className="form-group">
-            <label>Date fin</label>
+            <label>{t('form.end_date')}</label>
             <input type="datetime-local" value={form.end_date} onChange={(e) => setForm({ ...form, end_date: e.target.value })} />
           </div>
         </div>

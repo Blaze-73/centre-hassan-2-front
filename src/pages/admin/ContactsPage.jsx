@@ -42,7 +42,7 @@ export default function ContactsPage() {
       header: 'Lu',
       render: (row) => (
         <span style={{ color: row.is_read ? 'var(--success)' : 'var(--accent)', fontWeight: 600 }}>
-          {row.is_read ? 'Oui' : 'Non'}
+          {row.is_read ? t('common.yes') : t('common.no')}
         </span>
       ),
     },
@@ -78,7 +78,7 @@ export default function ContactsPage() {
         <div className="card" style={{ marginBottom: '1.5rem' }}>
           <div className="card-header">
             <h3>Message de {selected.name}</h3>
-            <button className="card-link" onClick={() => setSelected(null)}>Fermer</button>
+            <button className="card-link" onClick={() => setSelected(null)}>{t('common.close')}</button>
           </div>
           <div className="card-body" style={{ padding: '1.5rem' }}>
             <p><strong>Email :</strong> {selected.email}</p>

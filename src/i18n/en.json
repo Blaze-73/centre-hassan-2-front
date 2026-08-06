@@ -44,12 +44,26 @@
     "founded": "Foundation",
     "founded_text": "The Centre was inaugurated in 1988 by King Hassan II.",
     "figures": "Key Figures",
-    "awards": "Awards"
+    "awards": "Awards",
+    "timeline_title": "Timeline",
+    "timeline_1978": "Foundation of the Asilah Moussem",
+    "timeline_1988": "Inauguration of Centre Hassan II",
+    "timeline_2024": "Today — Cultural hub of Morocco",
+    "figure_benaissa": "Founder & Former Minister",
+    "figure_melehi": "Renowned Artist",
+    "figure_mohammed6": "Royal Patron"
   },
   "common": {
     "retry": "Retry",
     "loading": "Loading...",
-    "back": "Back"
+    "back": "Back",
+    "language": "Language",
+    "breadcrumb": "Breadcrumb",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No",
+    "read": "Read",
+    "unread": "Unread"
   },
   "events": {
     "title": "Events",
@@ -72,7 +86,15 @@
     "grid_view": "Grid view",
     "list_view": "List view",
     "calendar_view": "Calendar view",
-    "meta_description": "Discover all cultural events, conferences, and exhibitions hosted by the Centre Hassan II in Asilah."
+    "meta_description": "Discover all cultural events, conferences, and exhibitions hosted by the Centre Hassan II in Asilah.",
+    "category_conference": "Conference",
+    "category_exhibition": "Exhibition",
+    "category_workshop": "Workshop",
+    "category_concert": "Concert",
+    "category_festival": "Festival",
+    "category_literary": "Literary",
+    "category_ceremony": "Ceremony",
+    "category_cultural": "Cultural"
   },
   "spaces": {
     "title": "Our Spaces",
@@ -140,7 +162,8 @@
   "footer": {
     "rights": "All rights reserved",
     "follow_us": "Follow Us",
-    "quick_links": "Quick Links"
+    "quick_links": "Quick Links",
+    "language": "Language"
   },
   "notFound": {
     "title": "Page Not Found",
@@ -179,6 +202,40 @@
     "confirm_delete": "Confirm deletion?",
     "email": "Email",
     "password": "Password",
-    "login_btn": "Sign In"
+    "login_btn": "Sign In",
+    "notifications": "Notifications",
+    "expand_panel": "Expand panel",
+    "collapse_panel": "Collapse panel",
+    "logout_title": "Sign Out",
+    "logout_message": "Are you sure you want to sign out?",
+    "logout_confirm": "Sign Out",
+    "back_to_site": "Back to site",
+    "back_to_public_site": "Back to public site",
+    "actions": "Actions",
+    "role_admin": "Administrator",
+    "role_editor": "Editor",
+    "delete_title": "Delete",
+    "delete_confirm": "Delete",
+    "delete_cancel": "Cancel"
+  },
+  "form": {
+    "title_in": "Title in {{lang}}",
+    "description_in": "Description in {{lang}}",
+    "name_in": "Name in {{lang}}",
+    "content_in": "Content in {{lang}}",
+    "content": "Content",
+    "space": "Space",
+    "status": "Status",
+    "select_space": "Select a space",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "featured": "Featured",
+    "event_featured": "Featured event",
+    "article_featured": "Featured article",
+    "example_capacity": "e.g. 500",
+    "amenities_placeholder": "Projector, Sound system, Wi-Fi",
+    "lang_fr": "French",
+    "lang_en": "English",
+    "lang_ar": "Arabic"
   }
 }

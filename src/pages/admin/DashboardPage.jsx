@@ -76,7 +76,7 @@ export default function DashboardPage() {
                       <span className="mini-title">{ev.title?.fr || ev.title?.en || 'Sans titre'}</span>
                       <span className="mini-date">{ev.start_date ? format(new Date(ev.start_date), 'dd MMM yyyy', { locale: fr }) : '-'}</span>
                     </div>
-                    <span className={`badge badge-${ev.status}`}>{ev.status}</span>
+                    <span className={`badge badge-${ev.status}`}>{t(`admin.status_${ev.status}`, { defaultValue: ev.status })}</span>
                   </div>
                 ))}
               </div>
@@ -103,7 +103,7 @@ export default function DashboardPage() {
                       <span className="mini-date">{c.subject}</span>
                     </div>
                     <span className={`badge ${c.is_read ? 'badge-published' : 'badge-draft'}`}>
-                      {c.is_read ? 'Lu' : 'Non lu'}
+                      {c.is_read ? t('common.read') : t('common.unread')}
                     </span>
                   </div>
                 ))}

@@ -44,12 +44,26 @@
     "founded": "التأسيس",
     "founded_text": "افتتح المركز عام 1988 على يد الملك الحسن الثاني.",
     "figures": "شخصيات رئيسية",
-    "awards": "الجوائز"
+    "awards": "الجوائز",
+    "timeline_title": "الخط الزمني",
+    "timeline_1978": "تأسيس موسم أصيلة",
+    "timeline_1988": "افتتاح مركز الحسن الثاني",
+    "timeline_2024": "اليوم — قطب ثقافي في المغرب",
+    "figure_benaissa": "مؤسس ووزير سابق",
+    "figure_melehi": "فنان معروف",
+    "figure_mohammed6": "الراعي الملكي"
   },
   "common": {
     "retry": "إعادة المحاولة",
     "loading": "جارٍ التحميل...",
-    "back": "رجوع"
+    "back": "رجوع",
+    "language": "اللغة",
+    "breadcrumb": "مسار التنقل",
+    "close": "إغلاق",
+    "yes": "نعم",
+    "no": "لا",
+    "read": "مقروء",
+    "unread": "غير مقروء"
   },
   "events": {
     "title": "الفعاليات",
@@ -72,7 +86,15 @@
     "grid_view": "عرض شبكة",
     "list_view": "عرض قائمة",
     "calendar_view": "عرض تقويم",
-    "meta_description": "اكتشف جميع الفعاليات الثقافية والمؤتمرات والمعارض التي ينظمها مركز الحسن الثاني في أصيلة."
+    "meta_description": "اكتشف جميع الفعاليات الثقافية والمؤتمرات والمعارض التي ينظمها مركز الحسن الثاني في أصيلة.",
+    "category_conference": "مؤتمر",
+    "category_exhibition": "معرض",
+    "category_workshop": "ورشة",
+    "category_concert": "حفل موسيقي",
+    "category_festival": "مهرجان",
+    "category_literary": "أدبي",
+    "category_ceremony": "حفل رسمي",
+    "category_cultural": "ثقافي"
   },
   "spaces": {
     "title": "فضاءاتنا",
@@ -140,7 +162,8 @@
   "footer": {
     "rights": "جميع الحقوق محفوظة",
     "follow_us": "تابعنا",
-    "quick_links": "روابط سريعة"
+    "quick_links": "روابط سريعة",
+    "language": "اللغة"
   },
   "notFound": {
     "title": "الصفحة غير موجودة",
@@ -179,6 +202,40 @@
     "confirm_delete": "تأكيد الحذف؟",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
-    "login_btn": "تسجيل الدخول"
+    "login_btn": "تسجيل الدخول",
+    "notifications": "الإشعارات",
+    "expand_panel": "توسيع اللوحة",
+    "collapse_panel": "طي اللوحة",
+    "logout_title": "تسجيل الخروج",
+    "logout_message": "هل أنت متأكد من رغبتك في تسجيل الخروج؟",
+    "logout_confirm": "تسجيل الخروج",
+    "back_to_site": "العودة إلى الموقع",
+    "back_to_public_site": "العودة إلى الموقع العام",
+    "actions": "إجراءات",
+    "role_admin": "مدير",
+    "role_editor": "محرر",
+    "delete_title": "حذف",
+    "delete_confirm": "حذف",
+    "delete_cancel": "إلغاء"
+  },
+  "form": {
+    "title_in": "العنوان بالـ {{lang}}",
+    "description_in": "الوصف بالـ {{lang}}",
+    "name_in": "الاسم بالـ {{lang}}",
+    "content_in": "المحتوى بالـ {{lang}}",
+    "content": "المحتوى",
+    "space": "الفضاء",
+    "status": "الحالة",
+    "select_space": "اختر فضاء",
+    "start_date": "تاريخ البداية",
+    "end_date": "تاريخ النهاية",
+    "featured": "مميز",
+    "event_featured": "فعالية مميزة",
+    "article_featured": "مقال مميز",
+    "example_capacity": "مثال: 500",
+    "amenities_placeholder": "جهاز عرض، نظام صوتي، واي فاي",
+    "lang_fr": "الفرنسية",
+    "lang_en": "الإنجليزية",
+    "lang_ar": "العربية"
   }
 }

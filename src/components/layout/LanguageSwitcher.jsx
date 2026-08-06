@@ -5,7 +5,7 @@ import { ThemeContext } from '../../context/ThemeContext';
 const flags = { fr: 'FR', en: 'EN', ar: 'AR' };
 
 export default function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { setLang } = useContext(ThemeContext);
 
   const handleChange = (lng) => {
@@ -14,7 +14,7 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="language-switcher" role="group" aria-label="Language">
+    <div className="language-switcher" role="group" aria-label={t('common.language')}>
       {Object.entries(flags).map(([code, label]) => (
         <button
           key={code}
